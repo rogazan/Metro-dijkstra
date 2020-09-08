@@ -224,6 +224,7 @@ Esta es una situación frecuente en el metro de New York: varias estaciones comp
 ![imagen12](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image12.jpg)
 
 El fragmento muestra 5 estaciones denominadas “23st” y otras 3 denominadas “14 St” Observando con más atención vemos que el mismo plano nos informa también de las líneas que pasan por cada una de las duplicadas. La solución pasa por tratarlas como estaciones independientes (porque es lo que realmente son), asignando un nombre formado por los dos elementos que figuran en el mapa: el nombre de la estación y las líneas que circulan por ella, lo que resultará en unos nombres de estaciones del tipo:
+
     23 St [C-E]
     23 St [1]
     23 St [F-M]
@@ -235,7 +236,8 @@ El fragmento muestra 5 estaciones denominadas “23st” y otras 3 denominadas �
 
 Nótese que el plano incluye una pasarela entre “14 St [1-2-3]” y “14 St [F-M]”, que deberá definirse en el fichero de mapa.
 
-__EN CONSTRUCCION__
+__EN CONSTRUCCION (Seguiré en breve)__
+
 ...
 ...
 ...
