@@ -176,3 +176,62 @@ En este caso recurriremos al modificador de unidireccionalidad (“| U”) y a l
     
 Los tramos ayudan a definirlo de varias maneras. Por ejemplo, otra alternativa sería definir un tramo desde el inicio de línea hasta el comienzo de la sección bifurcada, otro tramo desde el fin de la sección bifurcada hasta el fin de la línea y otros dos tramos para la sección bifurcada: uno con el recorrido de ida en esa sección indicando la unidireccionalidad de los enlaces entre estaciones y otro con el recorrido de vuelta de la misma sección, indicando igualmente la unidireccionalidad de estos enlaces.
 
+#### Bifurcaciones y líneas con destinos múltiples:
+es frecuente encontrar líneas que se bifurcan para alcanzar destinos diferentes con algún tipo de alternancia, incluso con un número considerable de bifurcaciones en la misma línea. Un ejemplo de múltiples bifurcaciones en la línea Metropolitan del metro de Londres es el siguiente:
+
+![imagen11](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image11.jpg)
+
+Podemos darle respuesta definiendo tantos tramos como sea necesario y con el fraccionamiento que más nos convenga. Una posible solución de tramos sería:
+
+    # Metropolitan
+    Amersham
+    Chalfont & Latimer
+    Chorleywood
+    Rickmansworth
+    Moor Park
+    Northwood
+    Northwood Hills
+    Pinner
+    North Harrow
+    Harrow-on-the-Hill
+    Northwick Park
+    Preston Road
+    …
+
+    > Metropolitan_1
+    Chalfont & Latimer
+    Chesham
+
+    > Metropolitan_2
+    Moor Park
+    Croxley
+    Watford
+
+    > Metropolitan_3
+    Harrow-on-the-Hill
+    West Harrow
+    Rayners Lane
+    Eastcote
+    Rulslip Manor
+    Rulslip
+    Ickenham
+    Hillingdon
+    Uxbridge
+
+#### Estaciones distintas con el mismo nombre:
+Esta es una situación frecuente en el metro de New York: varias estaciones comparten el mismo nombre por la única razón de estar en la misma calle, pero no tienen ningún tipo de enlace entre ellas y además pueden estar a una distancia considerable unas de otras. 
+
+![imagen12](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image12.jpg)
+
+El fragmento muestra 5 estaciones denominadas “23st” y otras 3 denominadas “14 St” Observando con más atención vemos que el mismo plano nos informa también de las líneas que pasan por cada una de las duplicadas. La solución pasa por tratarlas como estaciones independientes (porque es lo que realmente son), asignando un nombre formado por los dos elementos que figuran en el mapa el nombre de la estación y las líneas que circulan por ella, lo que resultará en unos nombres de estaciones del tipo:
+    23 St [C-E]
+    23 St [1]
+    23 St [F-M]
+    23 St [R-W]
+    23 St [6]
+    14 St [A-C-E]
+    14 St [1-2-3]
+    14 St [F-M]
+
+Nótese que el plano incluso existe una pasarela entre “14 St [1-2-3]” y “14 St [F-M]” que deberá definirse en el fichero de mapa.
+
