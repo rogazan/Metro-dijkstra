@@ -54,3 +54,45 @@ Una primera idea puede llevar a pensar en gestionar los pesos de los enlaces, pe
 Para dar solución al tema de los transbordos se redefine el concepto de “Estación” a otro más complejo, de modo que ya no se tratará de un nodo único sino que pasará a ser un conjunto de nodos con enlaces internos entre ellos. Así, una estación tendrá un nodo que podemos denominar “vestíbulo”, cuyo nombre será el de la propia estación, y N nodos que podemos denominar “andenes” (tantos como líneas pasen por la estación), cuyos nombres estarán formados por una concatenación del nombre de la estación y de la línea a la que sirven. En cuanto a los enlaces, el nodo vestíbulo contará con enlaces bidireccionales con todos los andenes, pero no existirán enlaces entre los distintos andenes de la misma estación. Se sintetiza en el gráfico siguiente:
 
 ![imagen3](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image3.jpg)
+
+Con esta interpretación, una lista de los nodos directamente asociados a la estación quedará así:
+
+    {Nombre: “Estacion2”, Vecinos : [“Estacion2-Roja”, “Estacion2-Azul”]},
+    {Nombre: “Estacion2-Roja”, Vecinos : [“Estacion2”, “Estacion1-Roja”, “Estacion3-Roja”]},
+    {Nombre: “Estacion2-Azul”, Vecinos : [“Estacion2”, “Estacion1-Azul”, “Estacion3-Azul”]}
+
+Se debe considerar que el viajero siempre accede a la red de metro a través del vestíbulo de la estación de origen y lo abandona a través del vestíbulo de la estación de destino y además debe especificarse un peso diferente para los tramos Vestíbulo–andén (los que se recorren caminando) y para los tramos de metro entre andenes de estaciones contiguas (los que se recorren en tren). Considerando las siguientes abreviaturas:
+
+    E = Estación
+    V = Vestíbulo
+    A = azul
+    R = rojo
+    Pva = Peso para los tramos Vestíbulo-Andén
+    Paa = Peso para los tramos de metro entre andenes de estaciones contiguas.
+
+En el ejemplo primero, el sistema contemplaría el primer camino así:
+
+    Camino1 = E1V > E1A > E2A > E3A > E4A > E5A > E5V 
+    Camino1 = 2 * Pva + 4 * Paa
+
+Mientras que el segundo camino será:
+
+    Camino2 = E1V > E1A > E2A > E2V > E2R > E7R > 44R > E4V > E4A > E5A > E5V
+    Camino2 = 6 * Pva + 4 * Paa
+
+Es evidente que el algoritmo decidirá el Camino1 como el adecuado por su peso inferior al del Camino2, con
+
+    diferencia = 4 * Pva
+
+Que es justamente el peso que asignamos a los dos transbordos (2 * Pva por cada transbordo)
+Con carácter general tendremos un cálculo para cualquier camino X:
+
+    CaminoX = entrada + salida + suma(Transbordos) + suma(Recorridos en trenes)
+    CaminoX = (2 * Pav) + (2 * Pav * num_transbordos) + ((num_estaciones – 1) * Paa) 
+    CaminoX = (2 * Pav) * (1 + num_transbordos) + Paa * (num_estaciones – 1)
+
+    Siendo num_estaciones el número de estaciones por las que se pasa, incluidas la de origen, la de destino y las de transbordos.
+
+Esto se ajusta con una razonablemente al entendimiento “humano” de lo que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando en número de estaciones sin transbordos sea significativamente superior al del recorrido con transbordos).
+
+Nótese que este tratamiento se hace “por software”, y no implica ningún cambio en la codificación del fichero de mapa.
