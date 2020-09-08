@@ -96,3 +96,33 @@ Con carácter general tendremos un cálculo para cualquier camino X:
 Esto se ajusta con una razonablemente al entendimiento “humano” de lo que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando en número de estaciones sin transbordos sea significativamente superior al del recorrido con transbordos).
 
 Nótese que este tratamiento se hace “por software”, y no implica ningún cambio en la codificación del fichero de mapa.
+
+#### Pasarelas entre estaciones:
+Una vez resuelto el asunto de los transbordo, que siempre se realizan entre andenes de una misma estación, aún podemos ver que existe otra clase de “transbordos” que se hacen entre estaciones de nombres diferentes, (lo podemos ver en el metro de Madrid entre las estaciones de Embajadores y Acacias, en el de Barcelona entre Provença y Diagona y muchísimos más. Los más complejos, como Nueva York o Moscú tienen montones de ellos). Aquí definiremos un concepto que denominaremos “pasarela” y que trataremos exactamente igual que una línea de metro que solo tenga dos estaciones en su recorrido. La única diferencia en su tratamiento radica en la posibilidad de asignar un peso particular para estos recorridos para lo que añadiremos un identificador de pasarela "@" al nombre la linea.
+
+![imagen4](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image4.jpg)
+
+Nótese que el uso de una pasarela es relativamente costoso. En el gráfico anterior vemos que una parte de un recorrido que incluya transbordo por la pasarela desde la línea azul a la línea roja implicará, siendo Pp el peso propio del tramo pasarela:
+
+    Azul-a-Roja = Pav + Pav + Pp + Pav + Pav
+    Azul-a-Roja = 4 * Pav + Pp
+
+#### Líneas circulares:
+Existen líneas que son circulares, esto es, que establecida una estación cualquiera como principio de línea y otra de fin de línea, aún existe un tramo bidireccional que une ambas. En el metro de Madrid podemos ver ejemplos en la linea 6 (gris) y en la Metrosur (verde oliva). La propia explicación sugiere la solución: En la descripción de la línea en el fichero de mapa pondremos una referencia adicional tras la última estación con el nombre de la primera, con lo que quedará definido correctamente: 
+
+![imagen5](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image5.jpg)
+
+####Línea parcialmente circular:
+Es un caso poco frecuente donde solamente es circular una parte de un extremo de la línea. Ejemplo de ello se puede encontrar en la línea 7bis del metro de París:
+
+![imagen6](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image6.jpg)
+
+La solución es similar a la de la línea circular, pero cerrando sobre la estación en la que converge el segmento circular en lugar de hacerlo sobre la primera, lo que traducido al fichero de mapa, dejaría la cosa como se muestra a continuación:
+
+![imagen6](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image6.jpg)
+
+
+
+
+
+
