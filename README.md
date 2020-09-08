@@ -18,7 +18,7 @@ El proceso de lectura del plano trasladará su información a la estructura de d
 Si bien esta es una aproximación válida, la intención es ir un poco más allá y construir una implantación más próxima a la realidad de las redes de metro buscando la manera de 
 automatizar las diversas particularidades que se encuentran en las redes de metropolitano de ciudades del mundo.
 
-Con este planteamiento, cada estación se traducirá en un nodo único con dos atributos: Uno “Nombre” y otro formado por una lista de nodos “vecinos” con los que tiene tramos comunes. Por ejemplo, una instancia de nodo estación podría definirse como:
+Con este planteamiento, cada estación se traducirá en un nodo único con dos atributos: Uno será el “Nombre” y otro será una lista de nodos “vecinos” con los que tiene tramos comunes. Por ejemplo, una instancia de nodo estación podría definirse como:
 
     {nombre: ”Gran Vía”, vecinos: [“Tribunal”, “Sol”, “Callao”, “Chueca”]}
 
@@ -33,3 +33,22 @@ Imaginemos un trazado similar al del gráfico siguiente y que el peso del tramo 
 
 ![imagen2](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image2.jpg)
 
+Si solo contemplamos los enlaces entre las estaciones sin más consideración, un trayecto desde “Estación 1” a “Estación 5” se podrá calcular como una ruta en la secuencia:
+
+    1 > 2 > 3 > 4 >  5 (4 tramos de igual peso), 
+
+Pero también podrá calcularse como otra ruta en la secuencia:
+
+    1 > 2 > 7 > 4 > 5 (igualmente 4 tramos del mismo peso).
+
+De esta manera se obtienen dos trayectos de peso idéntico dado que el trayecto se está calculando en función exclusiva del número de estaciones recorridas:
+
+    Trayecto = f(num_estaciones)
+
+Pero cualquier persona que haya usado el metro sabe que no es lo mismo hacer un recorrido de 4 estaciones sin cambiar de línea que hacer el mismo viaje con el mismo número de tramos pero haciendo dos trasbordos, es decir, que un trayecto optimo adaptado al viajero “humano” debería replantearse como:
+
+    trayecto = f(num_estaciones, num_transbordos).
+
+Una primera idea puede llevar a pensar en gestionar los pesos de los enlaces, pero se descarta inmediatamente dado que el peso entre dos nodos debe ser estático “per se” y no cabe ninguna revaloración en base a lo que se haya hecho antes o lo que se hará después de recorrer el tramo.
+
+Para dar solución al tema de los transbordos se redefine el concepto de “Estación” a otro más complejo, de modo que ya no se tratará de un nodo único sino que pasará a ser un conjunto de nodos con enlaces internos entre ellos. Así, una estación tendrá un nodo que podemos denominar “vestíbulo”, cuyo nombre será el de la propia estación, y N nodos que podemos denominar “andenes” (tantos como líneas pasen por la estación), cuyos nombres estarán formados por una concatenación del nombre de la estación y de la línea a la que sirven. En cuanto a los enlaces, el nodo vestíbulo contará con enlaces bidireccionales con todos los andenes, pero no existirán enlaces entre los distintos andenes de la misma estación. Se sintetiza en el gráfico siguiente:
