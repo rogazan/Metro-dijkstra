@@ -60,18 +60,6 @@ Para dar solución al tema de los transbordos se redefine el concepto de “Esta
 
 ![imagen3](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image3.jpg)
 
-Y en general el número de nodos por estación en el que incrementamos la visión básica de un nodo por estación será:
-
-    Inc(Num_nodos) = Num_lineas
-
-y el número de enlaces construídos para cada estación, se verá incrementado en
-
-    Inc(Num_enlaces) = 2 * Num_lineas
-    
-Este incemento es importante dado que el rendimiento del algoritmo de referencia 
-    
-
-
 Con esta interpretación, una lista de los nodos directamente asociados a la estación quedará así:
 
     {Nombre: “Estacion2”, Vecinos : [“Estacion2-Roja”, “Estacion2-Azul”]},
@@ -113,6 +101,20 @@ Con carácter general tendremos un cálculo para cualquier camino X:
 Esto se ajusta razonablemente al entendimiento de usuario de lo que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento, y dado su peso elevado, el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando en número de estaciones recorridas con menos transbordos sea significativamente superior al del recorrido con mas transbordos).
 
 Nótese que este tratamiento se hace “por software”, y no implica ningún cambio en la codificación del fichero de mapa.
+
+NOTA SOBRE RENDIMIENTO:
+El número de nodos y de enlaces por estación se incrementa notablemente frente a la visión simplista de un nodo único por estación::
+
+    Inc(Num_nodos_Estación) = Num_lineas
+
+y el número de enlaces añadidos a cada estación se verá incrementado en:
+
+    Inc(Num_enlaces_Estación) = 2 * Num_lineas
+    
+Este incremento en el número de nodos y enlaces tiene su lado negativo en el orden de complejidad del algoritmo de referencia, que se establece en: 
+    
+    O(V ^ 2), o bien O(E Log V) si se utiliza una lista priorizada (V = Num. Vertices, E = Num. Aristas)
+
 
 #### Pasarelas entre estaciones:
 los transbordos siempre se realizan entre andenes de una misma estación, pero aún podemos ver que existe otra clase de transbordos que se hacen entre estaciones de nombres diferentes, (lo podemos ver en el metro de Madrid entre las estaciones de Embajadores y Acacias, en el de Barcelona entre Provença y Diagonal y muchísimos más. Los más complejos, como Nueva York o Moscú tienen montones de ellos). Aquí definiremos un concepto que denominaremos “pasarela” y que trataremos exactamente igual que una línea de metro que solo tenga dos estaciones en su recorrido. La única diferencia en su tratamiento radica en la posibilidad de asignar un peso particular para estos recorridos, para lo que añadiremos un identificador de pasarela "@" al nombre la linea.
@@ -173,13 +175,4 @@ En este caso recurriremos al modificador de unidireccionalidad (“| U”) y a l
     Javel André Citroën | U
     
 Los tramos ayudan a definirlo de varias maneras. Por ejemplo, otra alternativa sería definir un tramo desde el inicio de línea hasta el comienzo de la sección bifurcada, otro tramo desde el fin de la sección bifurcada hasta el fin de la línea y otros dos tramos para la sección bifurcada: uno con el recorrido de ida en esa sección indicando la unidireccionalidad de los enlaces entre estaciones y otro con el recorrido de vuelta de la misma sección, indicando igualmente la unidireccionalidad de estos enlaces.
-
-
-
-
-
-
-
-
-
 
