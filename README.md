@@ -93,7 +93,7 @@ Con carácter general tendremos un cálculo para cualquier camino X:
 
     Siendo num_estaciones el número de estaciones por las que se pasa, incluidas la de origen, la de destino y las de transbordos.
 
-Esto se ajusta con una razonablemente al entendimiento “humano” de lo que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando en número de estaciones sin transbordos sea significativamente superior al del recorrido con transbordos).
+Esto se ajusta razonablemente al entendimiento de usuario de lo que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento, y dado su peso elevado, el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando en número de estaciones recorridas con menos transbordos sea significativamente superior al del recorrido con mas transbordos).
 
 Nótese que este tratamiento se hace “por software”, y no implica ningún cambio en la codificación del fichero de mapa.
 
@@ -119,7 +119,47 @@ Es un caso poco frecuente donde solamente es circular una parte de un extremo de
 
 La solución es similar a la de la línea circular, pero cerrando sobre la estación en la que converge el segmento circular en lugar de hacerlo sobre la primera, lo que traducido al fichero de mapa, dejaría la cosa como se muestra a continuación:
 
-![imagen6](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image6.jpg)
+![imagen7](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image7.jpg)
+
+#### Tramos:
+En condiciones normales una línea se describe como una relación de estaciones en secuencia desde la primera a la última, pero hay situaciones, como veremos más adelante, en las que conviene fraccionar la línea en tramos para gestionar algunas particularidades. La descripción de un tramo se hace dentro del contexto de la línea con un indicador de comienzo de tramo (">") en el que recibe un nombre único dentro de la línea y se extenderá hasta el siguiente inicio de tramo o hasta el final de la línea. Si no se especifica un tramo tras la identificación de la línea se entenderá que implícitamente existe un tramo primero que se extiende desde la identificación de la línea hasta la identificación de un tramo o hasta el final de la línea, lo que supone la existencia de un primer (y tal vez único) tramo que coincide con la propia línea. Por último, la conexión de un tramo con el resto de la línea se resuelve teniendo al menos una estación en común con el resto de la línea. El siguiente ejemplo muestra esta particularidad:
+
+![imagen8](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image8.jpg)
+
+#### Tramos unidireccionales:
+Hasta ahora hemos supuesto que los enlaces entre dos estaciones contiguas de un misma línea son siempre bidireccionales, pero se dan casos en lo que esta suposición NO es cierta. Si observamos el recorte del plano de metro de París mostrado en la particularidad de líneas parcialmente circulares, podemos observar que en ese anillo se circula en una única dirección. Para resolver esto mantendremos la bidireccionalidad como acción por defecto entre todas las estaciones y anotaremos la excepción de unidireccionalidad sólo para aquellas estaciones afectadas por ello, agregando al nombre de la estación el modificador “| U”, lo que indicará que la circulación entre la estación PREVIA y la que contiene el modificador se produce en una única dirección (de la PREVIA a la que contiene el modificador). El ejemplo en la línea 7bis de París quedará como se muestra a continuación:
+
+![imagen9](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image9.jpg)
+
+En el ejemplo previo puede verse que todo el recorrido circular que comienza y finaliza en Botzaris es de sentido unidireccional.
+
+El caso previo se da al final de una línea, pero podemos encontrar otros casos en que la unidireccionalidad se da en el medio de la línea (La ida viaja parcialmente por un camino y la vuelta por otro). Nuevamente podemos recurrir al metro de París para ver un ejemplo en la línea 10:
+
+![imagen10](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image10.jpg)
+
+En este caso recurriremos al modificador de unidireccionalidad (“| U”) y a la definición de tramos, que podemos aplicar de distintas maneras, aunque el resultado de todas ellas repercutirá de la misma manera en el grafo. Por ejemplo podemos definir la línea de principio a fin incluyendo el recorrido de ida de la bifurcación y especificando los enlaces unidireccionales de la sección bifurcada y agregaremos un tramo que refleje sólo el recorrido bifurcado de vuelta:
+    
+    # Linea 10
+    …
+    Javel André Citroën
+    Église d’Auteuil | U
+    Michel Ange Auteuil | U
+    Porte d’Auteuil | U
+    Boulogne Jean Jaurès | U
+    …
+
+    > Tramo retorno L10
+    Boulogne Jean Jaurès
+    Michel Ange Molitor | U
+    Chardon Lagache | U
+    Mirabeau | U
+    Javel André Citroën | U
+    
+Los tramos ayudan a definirlo de varias maneras. Por ejemplo, otra alternativa sería definir un tramo desde el inicio de línea hasta el comienzo de la sección bifurcada, otro tramo desde el fin de la sección bifurcada hasta el fin de la línea y otros dos tramos para la sección bifurcada: uno con el recorrido de ida en esa sección indicando la unidireccionalidad de los enlaces entre estaciones y otro con el recorrido de vuelta de la misma sección, indicando igualmente la unidireccionalidad de estos enlaces.
+
+
+
+
 
 
 
