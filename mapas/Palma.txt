@@ -1,0 +1,21 @@
+#Linea M1
+Estación Intermodal de Plaza España
+Jacinto Verdaguer
+Son Costa - Son Fortesa
+Son Fuster Vell
+Gran Vía Asima
+Son Castelló
+Camí dels Reis
+Son Sardina
+Universidad de las Islas Baleares
+
+#Linea M2
+Estación Intermodal de Plaza España
+Jacinto Verdaguer
+Son Costa - Son Fortesa
+Son Fuster
+Virgen de Lluc
+Pont d'Inca
+Pont d'Inca Nou
+Polígono de Marratxí
+Marrachí

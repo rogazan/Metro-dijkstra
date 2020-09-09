@@ -1,0 +1,447 @@
+#Linea Circle
+Aldgate
+Tower Hill
+Monument
+Cannon Street
+Mansion House
+Blackfriars
+Temple
+Embankment
+Westminster
+St. James's Park
+Victoria
+Sloane Square
+South Kensington
+Gloucester Road
+High Street Kensington
+Notting Hill Gate
+Bayswater
+Paddington
+Edgware Road
+Baker Street
+Great Portland Street
+Euston Square
+King's Cross St. Pancras
+Farringdon
+Barbican
+Moorgate
+Liverpool Street
+Aldgate
+
+#Linea Bakerloo
+Elephant & Castle
+Lambeth North
+Waterloo
+Embankment
+Charing Cross
+Piccadilly Circus
+Oxford Circus
+Regent's Park
+Marylebone
+Paddington
+Warwick Avenue
+Maida Vale
+Kilburn Park
+Kensal Green
+Willesden Junction
+Harlesden
+Stonebridge Park
+Wembley Central
+North Wembley
+South Kenton
+Kenton
+Harrow & Wealdstone
+
+#Linea Central
+Ealing Broadway
+West Acton
+North Acton
+East Acton
+White City
+Shepherd's Bush (Central)
+Holland Park
+Notting Hill Gate
+Queensway
+Lancaster Gate
+Marble Arch
+Bond Street
+Oxford Circus
+Tottenham Court Road
+Holborn
+Chancery Lane
+St. Paul's
+Bank
+Liverpool Street
+Bethnal Green
+Stratford
+Leyton
+Leytonstone
+Snaresbrook
+South Woodford
+Woodford
+Buckhurst Hill
+Loughton
+Debden
+Theydon Bois
+Epping
+
+>Tramo Central_1
+Leytonstone
+Wanstead
+Redbridge
+Gants Hill
+Newbury Park
+Bankingside
+Fairlop
+Halnault
+Grange Hill
+Chigwell
+Roding Valley
+Woodford
+
+>Tramo Central_2
+North Acton
+Hanger Lane
+Perivale
+Greenford
+Northolt
+South Rulslip
+Rulslip Gardens
+West Rulslip
+
+#Linea District
+Ealing Broadway
+Ealing Common
+Acton Town
+Chiswick Park
+Turnham Green
+Stamford Brook
+Ravenscourt Park
+Hammersmith
+Barons Court
+West Kensington
+Earl's Court
+Gloucester Road
+South Kensington
+Sloane Square
+Victoria
+St. James's Park
+Westminster
+Embankment
+Temple
+Blackfriars
+Mansion House
+Cannon Street
+Monument
+Tower Hill
+Aldgate East
+Whitechapel
+Stepney Green
+Mile End
+Bow Road
+Bromley-by-Bow
+West Ham
+Plaistow
+Upton Park
+East Ham
+Barking
+Upney
+Becontree
+Dagenham Heathway
+Dagenham East
+Elm Park
+Hornchurch
+Upminster Bridge
+Upminster
+
+>Tramo District_1
+Turnham Green
+Gunnersbury
+Kew Gardens
+Richmond
+
+>Tramo District_2
+Earl's Court
+Kensington (Olimpia)
+
+>Tramo District_3
+Earl's Court
+West Brompton
+Fulham Broadway
+Parsons Green
+Putney Bridge
+East Putney
+Southfields
+Wimblendon Park
+Wimblendon
+
+>Tramo District_4
+Earl's Court
+High Street Kensington
+Notting Hill Gate
+Bayswater
+Paddington
+Edgware Road
+
+#Linea Hammersmith&City
+Hammersmith
+Goldhawk Road
+Shepherd's Bush Market
+Wood Lane
+Latimer Road
+Ladbroke Grove
+Westbourne Park
+Royal Oak
+Paddington
+Edgware Road
+Baker Street
+Great Portland Street
+Euston Square
+King's Cross St. Pancras
+Farringdon
+Barbican
+Moorgate
+Liverpool Street
+Aldgate East
+Whitechapel
+Stepney Green
+Mile End
+Bow Road
+Bromley-by-Bow
+West Ham
+Plaistow
+Upton Park
+East Ham
+Barking
+
+#Linea Jubilee
+Stanmore
+Canons Park
+Queensbury
+Kingsbury
+Wembley Park
+Neasden
+Dollis Hill
+Willesden Green
+Kilburn
+West Hampstead
+Finchley Road
+Swiss Cottage
+St. John's Wood
+Baker Street
+Bond Street
+Green Park
+Westminster
+Waterloo
+Southwark
+London Bridge
+Bermondsey
+Canada Water
+Canary Wharf
+North Greenwich
+Canning Town
+West Ham
+Stratford
+
+#Linea Metropolitan
+Amersham
+Chalfont & Latimer
+Chorleywood
+Rickmansworth
+Moor Park
+Northwood
+Northwood Hills
+Pinner
+North Harrow
+Harrow-on-the-Hill
+Northwick Park
+Preston Road
+Wembley Park
+Finchley Road
+Baker Street
+Great Portland Street
+Euston Square
+King's Cross St. Pancras
+Farringdon
+Barbican
+Moorgate
+Liverpool Street
+Aldgate
+
+>Tramo Metropolitan_1
+Chalfont & Latimer
+Chesham
+
+>Tramo Metropolitan_2
+Moor Park
+Croxley
+Watford
+
+>Tramo Metropolitan_3
+Harrow-on-the-Hill
+West Harrow
+Rayners Lane
+Eastcote
+Rulslip Manor
+Rulslip
+Ickenham
+Hillingdon
+Uxbridge
+
+#Linea Northern
+Morden
+South Wimbledon
+Colliers Wood
+Tooting Broadway
+Tooting Bec
+Balham
+Clapham South
+Clapham Common
+Clapham North
+Stockwell
+Oval
+Kennington
+Elephant & Castle
+Borough
+London Bridge
+Bank
+Moorgate
+Old Street
+Angel
+King's Cross St. Pancras
+Euston
+Camden Town
+Chalk Farm
+Belsize Park
+Hampstead
+Golders Green
+Brent Cross
+Hendon Central
+Colindale
+Burnt Oak
+Edgware
+
+>Tramo Northern_1
+Kennington
+Waterloo
+Embankment
+Charing Cross
+Leicester Square
+Tottenham Court Road
+Goodge Street
+Warren Street
+Euston
+Mornington Crescent
+Camden Town
+
+>Tramo Northern_2
+Camden Town
+Kentish Town
+Tufnell Park
+Archway
+Highgate
+East Finchley
+Finchley Central
+West Finchley
+Woodside Park
+Totteridge & Whetstone
+High Barnet
+
+>Tramo Northern_3
+Finchley Central
+Mill Hill East
+
+#Linea Piccadilly
+Hatton Cross
+Hounslow West
+Hounslow Central
+Hounslow East
+Osterley
+Boston Manor
+Northfields
+South Ealing
+Turnham Green
+Hammersmith
+Barons Court
+Earl's Court
+Gloucester Road
+South Kensington
+Knightsbridge
+Hyde Park Corner
+Green Park
+Piccadilly Circus
+Leicester Square
+Covent Garden
+Holborn
+Russell Square
+King's Cross St. Pancras
+Caledonian Road
+Holloway Road
+Arsenal
+Finsbury Park
+Manor House
+Turnpike Lane
+Wood Green
+Bounds Green
+Arnos Grove
+Southgate
+Oakwood
+Cockfosters
+
+>Tramo Piccadilly_1
+Hatton Cross
+Heathrow Terminal 4 | U
+Heathrow Terminals 1, 2 & 3 | U
+Hatton Cross | U
+
+>Tramo Piccadilly_2
+Turnham Green
+Acton Town
+Ealing Common
+North Ealing
+Park Royal
+Alperton
+Sudbury Hill
+South Harrow
+Rayners Lane
+Eastcote
+Rulslip Manor
+Rulslip
+Ickenham
+Hillingdon
+Uxbridge
+
+#Linea Victoria
+Brixton
+Stockwell
+Vauxhall
+Pimlico
+Victoria
+Green Park
+Oxford Circus
+Warren Street
+Euston
+King's Cross St. Pancras
+Highbury & Islington
+Finsbury Park
+Seven Sisters
+Tottenham Hale
+Blackhorse Road
+Walthamstow Central
+
+#Linea Waterloo&City
+Waterloo
+Bank
+
+#Linea East_London
+Soreditch
+Whitechapel
+Shadwell
+Wapping
+Canada Water
+Surrey Quays
+New Cross
+
+>Tramo East_London_1
+Surrey Quays
+New Cross Gate

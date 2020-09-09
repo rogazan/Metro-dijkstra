@@ -1,0 +1,237 @@
+#Linea 1
+Hospital de Bellvitge
+Bellvitge
+Av. Carrilet
+Rambla Just Oliveras
+Can Serra
+Florida
+Torrassa
+Santa Eulàlia
+Mercat Nou
+Plaça de Sants
+Hostafrancs
+Espanya
+Rocafort
+Urgell
+Universitat
+Catalunya
+Urquinaona
+Arc de Triomf
+Marina
+Glòries
+Clot
+Navas
+La Sagrera
+Fabra i Puig
+Sant Andreu
+Torras i Bages
+Trinitat Vella
+Baró de Viver
+Santa Coloma
+Fondo
+
+#Linea 2
+Paral·lel
+Sant Antoni
+Universitat
+Passeig de Gràcia
+Tetuan
+Monumental
+Sagrada Familia
+Encants
+Clot
+Bac de Roda
+Sant Martí
+La Pau
+Verneda
+Artigues / Sant Adrià
+Sant Roc
+Gorg
+Pep Ventura
+Badalona Pompeu Fabra
+
+#Linea 3
+Zona Universitària
+Palau Reial
+Maria Cristina
+Les Corts
+Plaça del Centre
+Sants Estació
+Tarragona
+Espanya
+Poble Sec
+Paral·lel
+Drassanes
+Liceu
+Catalunya
+Passeig de Gràcia
+Diagonal
+Fontana
+Lesseps
+Vallcarca
+Penitents
+Vall d'Hebron
+Montbau
+Mundet
+Valldaura
+Canyelles
+Roquetes
+Trinitat Nova
+
+#Linea 4
+Trinitat Nova
+Via Júlia
+Llucmajor
+Maragall
+Guinardó / Hospital de Sant Pau
+Alfons X
+Joanic
+Verdaguer
+Girona
+Passeig de Gràcia
+Urquinaona
+Jaume I
+Barceloneta
+Ciutadella / Vila Olímpica
+Bogatell
+Llacuna
+Poblenou
+Selva de Mar
+El Maresme / Fòrum
+Besòs Mar
+Besòs
+La Pau
+
+#Linea 5
+Cornellà Centre
+Gavarra
+Sant Ildefons
+Can Boixeres
+Can Vidalet
+Pubilla Cases
+Collblanc
+Badal
+Plaça de Sants
+Sants Estació
+Entença
+Hospital Clínic
+Diagonal
+Verdaguer
+Sagrada Família
+Sant Pau / Dos de Maig
+Camp de l'Arpa
+La Sagrera
+Congrés
+Maragall
+Virrei Amat
+Vilapicina
+Horta
+El Carmel
+El Coll / la Teixonera
+Vall d'Hebron
+
+#Linea 6
+Catalunya
+Provença
+Gràcia
+Sant Gervasi
+Muntaner
+La Bonanova
+Les Tres Torres
+Sarrià
+
+#Linea 7
+Catalunya
+Provença
+Gràcia
+Plaça Molina
+Pàdua
+El Putxet
+Av. Tibidabo
+
+#Linea 8
+Espanya
+Magòria / La Campana
+Ildefons Cerdà
+Europa / Fira
+Gornal
+Sant Josep
+L'Hospitalet / Av. Carrilet
+Almeda
+Cornellà / Riera
+Sant Boi
+Molí Nou / Ciutat Cooperativa
+
+#Linea 9N
+La Sagrera
+Onze de Setembre
+Bon Pastor
+Can Peixauet
+Santa Rosa
+Fondo
+Església Major
+Singuerlín
+Can Zam
+
+#Linea 9S
+Aeroport T1
+Aeroport T2
+Mas Blau
+Parc Nou
+Cèntric
+El Prat Estació
+Les Moreres
+Mercabarna
+Parc Logístic
+Fira
+Europa / Fira
+Can Tries / Gornal
+Torrassa
+Collblanc
+Zona Universitària
+
+#Linea 10N
+La Sagrera
+Onze de Setembre
+Bon Pastor
+Llefià
+La Salut
+Gorg
+
+#Linea 10S
+Zona Franca
+Foc
+Foneria
+Ciutat de la Justícia
+Provençana
+Can Tries / Gornal
+Torrassa
+Collblanc
+
+#Linea 11
+Trinitat Nova
+Casa de l'Aigua
+Torre Baró / Vallbona
+Ciutat Meridiana
+Can Cuiàs
+
+#Linea 12
+Sarrià
+Reina Elisenda
+
+#Linea FM
+Paral·lel
+Parc de Montjuïc
+
+
+#Pasarela @P1
+Provença
+Diagonal
+
+#Pasarela @P2
+L'Hospitalet / Av. Carrilet
+Av. Carrilet
+
+#Pasarela @P3
+Ildefons Cerdà
+Ciutat de la Justícia

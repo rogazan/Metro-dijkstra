@@ -1,0 +1,572 @@
+#Linea 1
+Bulvar Rokossovskogo
+Cherkizovskaya
+Preobrazhenskaya Ploschad
+Sokolniki
+Krasnoselskaya
+Komsomolskaya
+Krasnye Vorota
+Chistyye Prudy
+Lubyanka
+Okhotniy Ryad
+Biblioteka Imeni Lenina
+Kropotkinskaya
+Park Kultury
+Frunzenskaya
+Sportivnaya
+Vorobyovy Gory
+Universitet
+Prospekt Vernadskogo
+Yugo-Zapadnaya
+Troparyovo
+Rumyantsevo
+Salaryevo
+Filatov Lug
+Prokshino
+Olkhovaya
+Kommunarka
+
+#Linea 2
+Khovrino
+Belomorskaya
+Rechnoy Vokzal
+Vodny Stadion
+Voykovskaya
+Sokol
+Aeroport
+Dinamo
+Belorusskaya
+Mayakovskaya
+Tverskaya
+Teatralnaya
+Novokuznetskaya
+Paveletskaya
+Avtozavodskaya
+Tekhnopark
+Kolomenskaya
+Kashirskaya
+Kantemirovskaya
+Tsaritsyno
+Orekhovo
+Domodedovskaya
+Krasnogvardeyskaya
+Alma-Atinskaya
+
+#Linea 3
+Pyatnitskoe Shosse
+Mitino
+Volokolamskaya
+Myakinino
+Strogino
+Krylatskoye
+Molodyozhnaya
+Kuntsevskaya
+Slavyansky Bulvar
+Park Pobedy
+Kievskaya
+Smolenskaya
+Arbatskaya
+Ploschad Revolyutsii
+Kurskaya
+Baumanskaya
+Elektrozavodskaya
+Semyonovskaya
+Partizanskaya
+Izmaylovskaya
+Pervomayskaya
+Shchyolkovskaya
+
+#Linea 4
+Kuntsevskaya
+Pionerskaya
+Filyovsky Park
+Bagrationovskaya
+Fili
+Kutuzovskaya
+Studencheskaya
+Mezhdunarodnaya
+Vystavochnaya
+Kievskaya
+Smolenskaya
+Arbatskaya
+Aleksandrovsky Sad
+
+#Linea 5
+Kievskaya
+Krasnopresnenskaya
+Belorusskaya
+Novoslobodskaya
+Prospekt Mira
+Komsomolskaya
+Kurskaya
+Taganskaya
+Paveletskaya
+Dobryninskaya
+Oktyabrskaya
+Park Kultury
+Kievskaya
+
+#Linea 6
+Medvedkovo
+Babushkinskaya
+Sviblovo
+Botanichesky Sad
+VDNKh
+Alekseyevskaya
+Rizhskaya
+Prospekt Mira
+Sukharevskaya
+Turgenevskaya
+Kitay-gorod
+Tretyakovskaya
+Oktyabrskaya
+Shabolovskaya
+Leninskiy Prospekt
+Akademicheskaya
+Profsoyuznaya
+Novye Cheryomushki
+Kaluzhskaya
+Belyayevo
+Konkovo
+Tyoply Stan
+Yasenevo
+Novoyasenevskaya
+
+#Linea 7
+Planernaya
+Skhodnenskaya
+Tushinskaya
+Spartak
+Schukinskaya
+Oktyabrskoye Pole
+Polezhayevskaya
+Begovaya
+Ulitsa 1905 Goda
+Barrikadnaya
+Pushkinskaya
+Kuznetskiy Most
+Kitay-gorod
+Taganskaya
+Proletarskaya
+Volgogradskiy Prospekt
+Tekstilshchiki
+Kuzminki
+Ryazansky Prospekt
+Vykhino
+Lermontovskiy Prospekt
+Zhulebino
+Kotelniki
+
+#Linea 8A
+Rasskazovka
+Novoperedelkino
+Borovskoe Shosse
+Solntsevo
+Govorovo
+Ozyornaya
+Michurinskiy Prospekt
+Ramenki
+Lomonosovskiy Prospekt
+Minskaya
+Park Pobedy
+Shelepikha
+Khoroshyovskaya
+CSKA
+Petrovskiy Park
+Savyolovskaya
+
+#Linea 8
+Tretyakovskaya
+Marksistskaya
+Ploschad Ilyicha
+Aviamotornaya
+Shosse Entuziastov
+Perovo
+Novogireyevo
+Novokosino
+
+#Linea 9
+Altufyevo
+Bibirevo
+Otradnoye
+Vladykino
+Petrovsko-Razumovskaya
+Timiryazevskaya
+Dmitrovskaya
+Savyolovskaya
+Mendeleevskaya
+Tsvetnoy Bulvar
+Chekhovskaya
+Borovitskaya
+Polyanka
+Serpukhovskaya
+Tulskaya
+Nagatinskaya
+Nagornaya
+Nakhimovsky Prospekt
+Sevastopolskaya
+Chertanovskaya
+Yuzhnaya
+Prazhskaya
+Ulitsa Akademika Yangelya
+Annino
+Bulvar Dmitriya Donskogo
+
+#Linea 10
+Seligerskaya
+Verkhnie Likhobory
+Okruzhnaya
+Petrovsko-Razumovskaya
+Fonvizinskaya
+Butyrskaya
+Maryina Roshcha
+Dostoyevskaya
+Trubnaya
+Sretensky Bulvar
+Chkalovskaya
+Rimskaya
+Krestyanskaya Zastava
+Dubrovka
+Kozhukhovskaya
+Pechatniki
+Volzhskaya
+Lyublino
+Bratislavskaya
+Maryino
+Borisovo
+Shipilovskaya
+Zyablikovo
+
+#Linea 11
+Delovoy Tsentr
+Shelepikha
+Khoroshyovskaya
+CSKA
+Petrovskiy Park
+Savyolovskaya
+
+#Linea 12
+Bitsevsky Park
+Lesoparkovaya
+Ulitsa Starokachalovskaya
+Ulitsa Skobelevskaya
+Bulvar Admirala Ushakova
+Ulitsa Gorchakova
+Buninskaya Alleya
+
+#Linea 13
+Timiryazevskaya
+Ulitsa Milashenkova
+Teletsentr
+Ulitsa Akademika Korolyova
+Vystavochny Tsentr
+Ulitsa Sergeya Eyzenshteyna
+
+#Linea 14
+Okruzhnaya
+Vladykino
+Botanichesky Sad
+Rostokino
+Belokamennaya
+Bulvar Rokossovskogo
+Lokomotiv
+Izmaylovo
+Sokolinaya Gora
+Shosse Entuziastov
+Andronovka
+Nizhegorodskaya
+Novokhokhlovskaya
+Ugreshskaya
+Dubrovka
+Avtozavodskaya
+ZIL
+Verkhnie Kotly
+Krymskaya
+Ploschad Gagarina
+Luzhniki
+Kutuzovskaya
+Delovoy Tsentr MCC
+Shelepikha
+Khoroshyovo
+Zorge
+Panfilovskaya
+Streshnevo
+Baltiyskaya
+Koptevo
+Likhobory
+Okruzhnaya
+
+
+#Linea 15
+Lefortovo
+Aviamotornaya
+Nizhegorodskaya
+Stakhanovskaya
+Okskaya
+Yugo-Vostochnaya
+Kosino
+Ulitsa Dmitriyevskogo
+Lukhmanovskaya
+Nekrasovka
+
+#Linea D1
+Odintsovo
+Bakovka
+Skolkovo
+Nemchinovka
+Setun
+Rabochiy Posyolok
+Kuntsevskaya
+Slavyanskiy Bulvar
+Fili
+Testovskaya
+Begovaya
+Belorusskaya
+Savyolovskaya
+Timiryazevskaya
+Okruzhnaya
+Degunino
+Beskudnikovo
+Lianozovo
+Mark
+Novodachnaya
+Dolgoprudnaya
+Vodniki
+Khlebnikovo
+Sheremetyevskaya
+Lobnya
+
+#Linea D2
+Podolsk
+Silikatnaya
+Ostafyevo
+Scherbinka
+Butovo
+Bitsa
+Krasniy Stroitel
+Pokrovskoe
+Tsaritsyno
+Moskvorechye
+Kuryanovo
+Pererva
+Depo
+Kubanskaya
+Tekstilschiki
+Novokhokhlovskaya
+Kalitniki
+Moskva-Tovarnaya
+Kurskaya
+Kalanchyovskaya
+Rizhskaya
+Dmitrovskaya
+Grazhdanskaya
+Krasniy Baltiets
+Streshnevo
+Pokrovskoe-Streshnevo
+Tushinskaya
+Trikotazhnaya
+Volokolamskaya
+Penyagino
+Pavshino
+Krasnogorskaya
+Opalikha
+Anikeevka
+Nakhabino
+
+#Pasaje @P1
+Chistyye Prudy
+Turgenevskaya
+
+#Pasaje @P2
+Chistyye Prudy
+Sretensky Bulvar
+
+#Pasaje @P3
+Turgenevskaya
+Sretensky Bulvar
+
+#Pasaje @P4
+Lubyanka
+Kuznetskiy Most
+
+#Pasaje @P5
+Okhotniy Ryad
+Teatralnaya
+
+#Pasaje @P6
+Teatralnaya
+Ploschad Revolyutsii
+
+#Pasaje @P7
+Biblioteka Imeni Lenina
+Aleksandrovsky Sad
+
+#Pasaje @P8
+Biblioteka Imeni Lenina
+Borovitskaya
+
+#Pasaje @P9
+Biblioteka Imeni Lenina
+Arbatskaya
+Aleksandrovsky Sad
+
+#Pasaje @P10
+Arbatskaya
+Borovitskaya
+
+#Pasaje @P11
+Cherkizovskaya
+Lokomotiv
+
+#Pasaje @P12
+Sportivnaya
+Luzhniki
+
+#Pasaje @P13
+Voykovskaya
+Baltiyskaya
+
+#Pasaje @P14
+Voykovskaya
+Streshnevo
+
+#Pasaje @P15
+Dinamo
+Petrovskiy Park
+
+#Pasaje @P16
+Tverskaya
+Pushkinskaya
+
+#Pasaje @P17
+Tverskaya
+Chekhovskaya
+
+#Pasaje @P18
+Pushkinskaya
+Chekhovskaya
+
+#Pasaje @P19
+Tretyakovskaya
+Novokuznetskaya
+
+#Pasaje @P20
+Krasnogvardeyskaya
+Zyablikovo
+
+#Pasaje @P21
+Kurskaya
+Chkalovskaya
+
+#Pasaje @P22
+Partizanskaya
+Izmaylovo
+
+#Pasaje @P23
+Taganskaya
+Marksistskaya
+
+#Pasaje @P24
+Dobryninskaya
+Serpukhovskaya
+
+#Pasaje @P25
+Barrikadnaya
+Krasnopresnenskaya
+
+#Pasaje @P26
+Novoslobodskaya
+Mendeleevskaya
+
+#Pasaje @P27
+Leninskiy Prospekt
+Ploschad Gagarina
+
+#Pasaje @P28
+Pokrovskoe-Streshnevo
+Schukinskaya
+
+#Pasaje @P29
+Oktyabrskoye Pole
+Panfilovskaya
+
+#Pasaje @P30
+Oktyabrskoye Pole
+Zorge
+
+#Pasaje @P31
+Polezhayevskaya
+Khoroshyovskaya
+
+#Pasaje @P32
+Khoroshyovskaya
+Khoroshyovo
+
+#Pasaje @P33
+Proletarskaya
+Krestyanskaya Zastava
+
+#Pasaje @P34
+Ugreshskaya
+Volgogradskiy Prospekt
+
+#Pasaje @P35
+Testovskaya
+Shelepikha
+
+#Pasaje @P36
+Rimskaya
+Ploschad Ilyicha
+
+#Pasaje @P37
+Trubnaya
+Tsvetnoy Bulvar
+
+#Pasaje @P38
+Nagatinskaya
+Verkhnie Kotly
+
+#Pasaje @P39
+Bulvar Dmitriya Donskogo
+Ulitsa Starokachalovskaya
+
+#Pasaje @P40
+Dubrovka
+Kozhukhovskaya
+
+#Pasaje @P41
+Pechatniki
+Kubanskaya
+
+#Pasaje @P42
+Delovoy Tsentr
+Testovskaya
+
+#Pasaje @P43
+Shelepikha
+Testovskaya
+
+#Pasaje @P44
+Bitsevsky Park
+Novoyasenevskaya
+
+#Pasaje @P45
+Delovoy Tsentr MCC
+Testovskaya
+
+#Pasaje @P46
+Delovoy Tsentr MCC
+Mezhdunarodnaya
+
+#Pasaje @P47
+Kosino
+Lermontovskiy Prospekt
+
+#Pasaje @P48
+Moskva-Tovarnaya
+Rimskaya
+
+#Pasaje @P49
+Kalanchyovskaya
+Komsomolskaya
+

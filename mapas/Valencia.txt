@@ -1,0 +1,235 @@
+#Linea 1
+Bétera
+Horta Vella
+Masies
+Seminari-CEU
+Moncada-Alfara
+Massarrojos
+Rocafort
+Godella
+Burjassot-Godella
+Burjassot
+Empalme
+Beniferri
+Campanar
+Túria
+Àngel Guimerà
+Plaça Espanya
+Jesús
+Patraix
+Safranar
+Sant Isidre
+València Sud
+Paiporta
+Picanya
+Torrent
+Col·legi El Vedat
+Realón
+Sant Ramon
+Picassent
+Omet
+Espioca
+Font Almaguer
+Alginet
+Ausiàs March
+Carlet
+Benimodo
+L'Alcúdia
+Montortal
+Massalavés
+Alberic
+Villanueva de Castellón
+
+#Linea 2
+Llíria
+Benaguasil 2n
+Benaguasil 1r
+La Pobla de Vallbona
+Torre del Virrei
+L'Eliana
+Montesol
+El Clot
+Entrepins
+La Vallesa
+La Canyada
+Fuente del Jarro
+Santa Rita
+Paterna
+Campament
+Les Carolines-Fira
+Benimàmet
+Cantereria
+Empalme
+Beniferri
+Campanar
+Túria
+Àngel Guimerà
+Plaça Espanya
+Jesús
+Patraix
+Safranar
+Sant Isidre
+València Sud
+Paiporta
+Picanya
+Torrent
+Torrent Avinguda
+
+#Linea 3
+Rafelbunyol
+La Pobla de Farnals
+Massamagrell
+Museros
+Albalat dels Sorells
+Foios
+Meliana
+Almàssera
+Alboraya-Peris Aragó
+Alboraya-Palmaret
+Machado
+Benimaclet
+Facultats
+Alameda
+Colón
+Xàtiva
+Àngel Guimerà
+Avinguda del Cid
+Nou d'Octubre
+Mislata
+Mislata-Almassil
+Faitanar
+Quart de Poblet
+Salt de l'Aigua
+Manises
+Rosas
+Aeroport
+
+#Linea 4
+Mas del Rosari
+La Coma
+Tomás y Valiente
+Santa Gemma-Parc Científic UV
+TVV
+Vicent Andrés Estellés
+Campus
+Sant Joan
+La Granja
+Empalme
+Palau de Congressos
+Florista
+Garbí
+Benicalap
+Trànsits
+Marxalenes
+Reus
+Sagunt
+Pont de Fusta
+Primat Reig
+Benimaclet
+Vicent Zaragozà
+Universitat Politècnica
+La Carrasca
+Tarongers
+Serrería
+La Cadena
+Eugenia Viñes
+Les Arenes
+Doctor Lluch
+La Marina
+La Cadena
+
+#Linea 5
+Marítim-Serrería
+Ayora
+Amistat-Casa de Salud
+Aragón
+Alameda
+Colón
+Xàtiva
+Àngel Guimerà
+Avinguda del Cid
+Nou d'Octubre
+Mislata
+Mislata-Almassil
+Faitanar
+Quart de Poblet
+Salt de l'Aigua
+Manises
+Rosas
+Aeroport
+
+#Linea 6
+Tossal del Rei
+Sant Miquel dels Reis
+Estadi del Llevant
+Orriols
+Alfauir
+Primat Reig
+Benimaclet
+Vicent Zaragozà
+Universitat Politècnica
+La Carrasca
+Tarongers
+Serrería
+La Cadena
+Eugenia Viñes
+Les Arenes
+Mediterrani
+Grau-Canyamelar
+Francesc Cubells
+Marítim-Serrería
+
+#Linea 6R
+Mediterrani
+Doctor Lluch
+La Marina
+La Cadena
+
+#Linea 7
+Marítim-Serrería
+Ayora
+Amistat-Casa de Salud
+Aragón
+Alameda
+Colón
+Bailén
+Jesús
+Patraix
+Safranar
+Sant Isidre
+València Sud
+Paiporta
+Picanya
+Torrent
+Torrent Avinguda
+
+#Linea 8
+Marina Reial Joan Carles I
+Grau-Canyamelar
+Francesc Cubells
+Marítim-Serrería
+
+#Linea 9
+Alboraya-Peris Aragó
+Alboraya-Palmaret
+Machado
+Benimaclet
+Facultats
+Alameda
+Colón
+Xàtiva
+Àngel Guimerà
+Avinguda del Cid
+Nou d'Octubre
+Mislata
+Mislata-Almassil
+Faitanar
+Quart de Poblet
+Salt de l´ Aigua
+Manises
+Rosas
+La Cova
+La Presa
+València la Vella
+Masia de Traver
+Riba-roja de Túria

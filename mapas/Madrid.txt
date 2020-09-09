@@ -1,0 +1,368 @@
+#Linea 1
+Pinar de Chamartín
+Bambú
+Chamartín
+Plaza de Castilla
+Valdeacederas
+Tetuan
+Estrecho
+Alvarado
+Cuatro Caminos
+Rios Rosas
+Iglesia
+Bilbao
+Tribunal
+Gran Vía
+Sol
+Tirso de Molina
+Anton Martin
+Atocha
+Atocha Renfe
+Menendez Pelayo
+Pacifico
+Puente de Vallecas
+Nueva Numancia
+Portazgo
+Buenos Aires
+Alto del Arenal
+Miguel Hernandez
+Sierra de Guadalupe
+Villa de Vallecas
+Congosto
+La Gavia
+Las Suertes
+Valdecarros
+
+#Linea 2
+Las Rosas
+Avenida de Guadalajara
+Alsacia
+La Almudena
+La Elipa
+Ventas
+Manuel Becerra
+Goya
+Principe de Vergara
+Retiro
+Banco de España
+Sevilla
+Sol
+Opera
+Santo Domingo
+Noviciado
+San Bernardo
+Quevedo
+Canal
+Cuatro Caminos
+
+#Linea 3
+Villaverde Alto
+San Cristobal
+Villaverde Bajo Cruce
+Ciudad de los Angeles
+San Fermin - Orcasur
+Hospital 12 de Octubre
+Almendrales
+Legazpi
+Delicias
+Palos de la Frontera
+Embajadores
+Lavapies
+Sol
+Callao
+Plaza de España
+Ventura Rodriguez
+Arguelles
+Moncloa
+
+#Linea 4
+Arguelles
+San Bernardo
+Bilbao
+Alonso Martínez
+Colon
+Serrano
+Velazquez
+Goya
+Lista
+Diego de Leon
+Avenida de America
+Prosperidad
+Alfonso XIII
+Avenida de la Paz
+Arturo Soria
+Esperanza
+Canillas
+Mar de Cristal
+San Lorenzo
+Parque de Santa María
+Hortaleza
+Manoteras
+Pinar de Chamartín
+
+#Linea 5
+Alameda de Osuna
+El Capricho
+Canillejas
+Torre Arias
+Suanzes
+Ciudad Lineal
+Pueblo Nuevo
+Quintana
+El Carmen
+Ventas
+Diego de Leon
+Nuñez de Balboa
+Ruben Dario
+Alonso Martínez
+Chueca
+Gran Vía
+Callao
+Opera
+La Latina
+Puerta de Toledo
+Acacias
+Pirámides
+Marqués de Vadillo
+Urgel
+Oporto
+Vista Alegre
+Carabanchel
+Eugenia de Montijo
+Aluche
+Empalme
+Campamento
+Casa de Campo
+
+#Linea 6
+Laguna
+Carpetana
+Oporto
+Opanel
+Plaza Elíptica
+Usera
+Legazpi
+Arganzuela - Planetario
+Mendez alvaro
+Pacifico
+Conde de Casal
+Sainz de Baranda
+O'Donnell
+Manuel Becerra
+Diego de Leon
+Avenida de America
+Republica Argentina
+Nuevos Ministerios
+Cuatro Caminos
+Guzman el Bueno
+Vicente Aleixandre
+Ciudad Universitaria
+Moncloa
+Arguelles
+Príncipe Pío
+Puerta del angel
+Alto de Extremadura
+Lucero
+Laguna
+
+#Linea 7
+Hospital del Henares
+Henares
+Jarama
+San Fernando
+La Rambla
+Coslada Central
+Barrio del Puerto
+Estadio Olimpico
+Las Musas
+San Blas
+Simancas
+Garcia Noblejas
+Ascao
+Pueblo Nuevo
+Barrio de la Concepcion
+Parque de las Avenidas
+Cartagena
+Avenida de America
+Gregorio Marañon
+Alonso Cano
+Canal
+Islas Filipinas
+Guzman el Bueno
+Francos Rodriguez
+Valdezarza
+Antonio Machado
+Penagrande
+Avenida de la Ilustracion
+Lacoma
+Pitis
+
+#Linea 8
+Nuevos Ministerios
+Colombia
+Pinar del Rey
+Mar de Cristal
+Campo de las Naciones
+Aeropuerto T1 T2 T3
+Barajas
+Aeropuerto T4
+
+#Linea 9
+Paco de Lucía
+Mirasierra
+Herrera Oria
+Barrio del Pilar
+Ventilla
+Plaza de Castilla
+Duque de Pastrana
+Pio XII
+Colombia
+Concha Espina
+Cruz del Rayo
+Avenida de America
+Nuñez de Balboa
+Principe de Vergara
+Ibiza
+Sainz de Baranda
+Estrella
+Vinateros
+Artilleros
+Pavones
+Valdebernardo
+Vicalvaro
+San Cipriano
+Puerta de Arganda
+Rivas Urbanizaciones
+Rivas Futura
+Rivas Vaciamadrid
+La Poveda
+Arganda del Rey
+
+#Linea 10
+Hospital Infanta Sofia
+Reyes Catolicos
+Baunatal
+Manuel de Falla
+Marques de la Valdavia
+La Moraleja
+La Granja
+Ronda de la Comunicacion
+Las Tablas
+Montecarmelo
+Tres Olivos
+Fuencarral
+Begoña
+Chamartín
+Plaza de Castilla
+Cuzco
+Santiago Bernabeu
+Nuevos Ministerios
+Gregorio Marañon
+Alonso Martínez
+Tribunal
+Plaza de España
+Príncipe Pío
+Lago
+Batán
+Casa de Campo
+Colonia Jardín
+Aviación Española
+Cuatro Vientos
+Joaquin Vilumbrales
+Puerta del Sur
+
+#Linea 11
+Plaza Elíptica
+Abrantes
+Pan Bendito
+San Francisco
+Carabanchel Alto
+La Peseta
+La Fortuna
+
+#Linea 12
+Puerta del Sur
+Parque Lisboa
+Alcorcon Central
+Parque Oeste
+Universidad Rey Juan Carlos
+Móstoles Central
+Pradillo
+Hospital de Móstoles
+Manuela Malasana
+Loranca
+Hospital de Fuenlabrada
+Parque Europa
+Fuenlabrada Central
+Parque de los Estados
+Arroyo Culebro
+Conservatorio
+Alonso de Mendoza
+Getafe Central
+Juan de la Cierva
+El Casar
+Los Espartales
+El Bercial
+El Carrascal
+Julian Besteiro
+Casa del Reloj
+Hospital Severo Ochoa
+Leganes Central
+San Nicasio
+Puerta del Sur
+
+#Linea R
+Opera
+Príncipe Pío
+
+#Linea ML1
+Las Tablas
+Palas de Rey
+María Tudor
+Blasco Ibanez
+Alvarez de Villaamil
+Antonio Saura
+Virgen del Cortijo
+Fuente de la Mora
+Pinar de Chamartín
+
+#Linea ML2
+Colonia Jardín
+Prado de la Vega
+Colonia de los angeles
+Prado del Rey
+Somosaguas Sur
+Somosaguas centro
+Pozuelo Oeste
+Belgica
+Dos Castillas
+Campus de Somosaguas
+Avenida de Europa
+Berna
+Estacion de Aravaca
+
+#Linea ML3
+Colonia Jardín
+Ciudad de la imagen
+Jose Isbert
+Ciudad del Cine
+Cocheras
+Retamares
+Monteprincipe
+Ventorro del Cano
+Prado del espino
+Cantabria
+Ferial de Boadilla
+Boadilla centro
+Nuevo mundo
+Siglo XXI
+Infante Don Luis
+Puerta de Boadilla
+
+#Pasarela @P1
+Embajadores
+Acacias
+
+#Pasarela @P2
+Plaza de España
+Noviciado
