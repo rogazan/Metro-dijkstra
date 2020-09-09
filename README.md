@@ -10,7 +10,9 @@ Empezaré diciendo que NO soy especialista en materia de suburbanos ni dispongo 
 A lo largo del texto haré referencia a diversas instalaciones de metro de ciudades del mundo e incluiré mis propios mapas de algunas de ellas. Algunas las conozco como “usuario mas o menos vanzado” (Madrid, Paris), otras sólo circunstancialmente como “turista” (Londres, Barcelona, Nueva York) y otras no las conozco más allá de la información publicada (la mayoría). Por ello ruego al lector que sea indulgente con las imprecisiones o errores que haya podido cometer en la interpretación de la información publicada y de sus casuísticas particulares.
 
 ### Planteamiento:
-Partiremos de un fichero de texto plano que contenga la información necesaria, al que denominaremos "ficheros de mapa". Este fichero contendrá el listado de los nombres de estaciones en el mismo orden en que se encuentran en la información pública, agrupada por líneas (con las particularidades que se indicarán a lo largo del presente texto). Cada línea se identificará con un indicador de comienzo de línea (“#”) acompañado del nombre de la  línea y encabezando la lista de estaciones que la forman. Un mismo nombre de estación en dos líneas diferentes se interpreta como un transbordo bidireccional entre ambas líneas. Además, como ya se ha mencionado, los ficheros de los planos de metro se construirán exclusivamente con información pública, (planos oficiales, descripciones de líneas y estaciones que se encuentran en las webs específicas de cada servicio de metropolitano y en otras fuentes públicas de uso común, tipo Wikipedia). A continuación se muestra un ejemplo esquematizado de fichero de un mapa realizado con este criterio:
+Partiremos de la codificación de un “fichero de mapa” para cada sistema de metro que contendrá una relación de todas las líneas que lo forman y en cada una de ellas se listarán los nombres de las estaciones que la componen en la misma secuencia en que se encuentran en el mapa oficial (con las particularidades que se indicarán a lo largo del presente texto) y de un desarrollo de software que lo interprete y gestione su información.
+
+Cada línea se identificará con un indicador de comienzo de línea (“#”) acompañado del nombre de la  línea y encabezando la lista de estaciones que la forman. Un mismo nombre de estación en dos líneas diferentes se interpreta como un transbordo bidireccional entre ambas líneas. Además, como ya se ha mencionado, los ficheros de los planos de metro se construirán exclusivamente con información pública, (planos oficiales, descripciones de líneas y estaciones que se encuentran en las webs específicas de cada servicio de metropolitano y en otras fuentes públicas de uso común, tipo Wikipedia). A continuación se muestra un ejemplo esquematizado de fichero de un mapa realizado con este criterio:
 
 ![imagen1](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image1.jpg)
 
@@ -235,6 +237,32 @@ El fragmento muestra 5 estaciones denominadas “23st” y otras 3 denominadas �
     14 St [F-M]
 
 Nótese que el plano incluye una pasarela entre “14 St [1-2-3]” y “14 St [F-M]”, que deberá definirse en el fichero de mapa.
+
+#### Líneas locales y líneas express:
+En ciertas instalaciones de metro se definen líneas locales (las que tiene parada en todas las estaciones de la línea) y líneas express (las que siguen el mismo recorrido pero sólo tienen parada en determinadas estaciones significativas). Ejemplos de ello se encuentran en las líneas 5, 7, R,...del metro de New york que cuentan conn la correspondientes variantes Local y Express. Puesto que los planos originales ya las identifican "casi" como líneas diferentes, se hará lo mismo en el modelo de plano aquí definido. Debe entenderse que las estaciones comunes de ambas líneas se interpretan como transbordos. De esta manera, y si la ponderación de pesos lo justifica, se puede obtener un recorrido que utilice parcialmente la variante express, un transbordo a la variante local y un fin de trayecto sobre la local, como se hace en la realidad. A continuación se muestra la definición para la línea 7 de New york:
+
+![imagen13](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image13.jpg)
+
+
+#### Líneas con tramos inconexos:
+Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede entenderse como un “cajón de sastre” donde se incluyen pequeñas secciones dispersas para enlaces varios. Nuevamente remitimos al metro de New York para verlo en la línea S, que consta de tres secciones no conectadas entre ellas e distintas partes de la ciudad. Lo solucionaremos generando tantas líneas independientes como secciones de la línea existan en la realidad, a las que se dará un nombre que haga referencia a la nomenclatura original. La siguiente definición muestra esta solución:
+
+    # S1
+    Times Square-42nd Street (N-Q-R-S1-W-1-2-3-7-7E)
+    Grand Central-42nd Street (S1-4-5-6-6E-7-7E)
+
+    # S2
+    Franklin Avenue (A-C-S2)
+    Botanic Garden (S2)
+    Prospect Park (B-Q-S2)
+
+    # S3
+    Broad Channel (A-S3)
+    Beach 90th Street (A-S3)
+    Beach 98th Street (A-S3)
+    Beach 105th Street (A-S3)
+    Rockaway Park-Beach 116th Street (A-S3)
+
 
 __EN CONSTRUCCION (Seguiré en breve)__
 
