@@ -263,6 +263,33 @@ Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede 
     Beach 105th Street (A-S3)
     Rockaway Park-Beach 116th Street (A-S3)
 
+### Las excepciones que NO se contemplan
+
+#### Zonas de facturación: 
+
+En la redes de metro podemos ver zonas de facturación diferenciada en función de diversos factores: Número de estaciones recorridas, distancia recorrida en kms. , ubicación de las estaciones en zonas específicas o destinos particulares, etc… Nada de eso se tiene en cuenta en el tratamiento en tanto que lo consideraremos una solución topológica  y no un tratamiento con implicación económica. Buscamos la solución al recorrido, no el coste de dicho recorrido. 
+
+### Implicaciones del horario o del calendario en la topología de las redes:
+
+En las redes de metro podemos ver tratamientos diferenciados en función del la hora del día o de la fecha de calendario, secciones enteras que sólo funcionan en determinados horarios (p.e.  en las horas punta) o en determinadas fechas (p.e. sólo en días laborables), estaciones que cierran en ciertos horarios aunque la línea siga operativa (p.e. en horario nocturno)… Nada de ello se tiene en cuenta, nuevamente lo trataremos como una solución topológica.
+
+### Peso de los tramos:
+No disponemos de esa información para los distintos servicios de metro, por tanto los estableceremos por estimación.
+
+Consideraremos que el tiempo que se invierte en el recorrido entre dos estaciones, incluido el que el tren permanece parado para el intercambio de pasajeros en cada estación, es constante para toda la red. La experiencia demuestra que es una suposición razonable y que ese valor, en términos de promedio,  puede rondar los 2 minutos.
+
+Tampoco estableceremos pesos específicos para los recorridos vestíbulo-anden o anden-vestíbulo. Igualmente estableceremos  un valor basado en la experiencia de 3 minutos para cada uno de ellos, lo que supone que un acceso al servicio de metro (vestíbulo-anden) estima 3 minutos hasta que se aborda el servicio. Y que un transbordo (anden-vestíbulo + vestíbulo-anden) será de 6 minutos.
+
+En cuanto al peso de recorrido de las pasarelas, se trata de un parámetro muy variable que ponderaremos, en base a las muy limitadas experiencias, en 4 minutos. Debe entenderse que el uso completo de una pasarela implica los correspondientes transbordos en cada extremo.
+
+#### Frecuencias:
+
+Tampoco disponemos de información sobre las frecuencias y/o horarios de paso de los trenes que podamos generalizar, por lo tanto no podemos establecer esos tiempos. Además, el método utilizado para los distintos servicios varía enormemente: En ciertos casos se calcula en base a intervalos o frecuencias por tramo horario, en otros se publican tablas completas de horarios de paso por estación y en otros casos se funciona con un proceso mixto entre ambos. Y puesto que no tenemos forma de estimar el tiempo de espera en andén, entenderemos que ese tiempo queda absorbido en los distintos pesos estimados en el apartado anterior.
+
+#### Otros servicios implicados:
+
+En las redes de metro observamos distintos grados de implicación de otros servicios de transporte público implicados, de modo que se hace difícil establecer una barrera diferenciadora uniforme. Por ejemplo, las líneas de trenes de cercanía que se implican con el metro en la parte de su recorrido que atraviesa el centro urbano, o las líneas de distintos tipos de tranvía, etc… En los planos que se incluyen hemos evitado estos servicios, aunque su inclusión es tan simple como incorporar al fichero de mapa las líneas correspondientes.
+
 
 __EN CONSTRUCCION (Seguiré en breve)__
 
