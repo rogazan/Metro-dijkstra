@@ -269,11 +269,11 @@ Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede 
 
 En la redes de metro podemos ver zonas de facturación diferenciada en función de diversos factores: Número de estaciones recorridas, distancia recorrida en kms. , ubicación de las estaciones en zonas específicas o destinos particulares, etc… Nada de eso se tiene en cuenta en el tratamiento en tanto que lo consideraremos una solución topológica  y no un tratamiento con implicación económica. Buscamos la solución al recorrido, no el coste de dicho recorrido. 
 
-### Implicaciones del horario o del calendario en la topología de las redes:
+#### Implicaciones del horario o del calendario en la topología de las redes:
 
 En las redes de metro podemos ver tratamientos diferenciados en función del la hora del día o de la fecha de calendario, secciones enteras que sólo funcionan en determinados horarios (p.e.  en las horas punta) o en determinadas fechas (p.e. sólo en días laborables), estaciones que cierran en ciertos horarios aunque la línea siga operativa (p.e. en horario nocturno)… Nada de ello se tiene en cuenta, nuevamente lo trataremos como una solución topológica.
 
-### Peso de los tramos:
+#### Peso de los tramos:
 No disponemos de esa información para los distintos servicios de metro, por tanto los estableceremos por estimación.
 
 Consideraremos que el tiempo que se invierte en el recorrido entre dos estaciones, incluido el que el tren permanece parado para el intercambio de pasajeros en cada estación, es constante para toda la red. La experiencia demuestra que es una suposición razonable y que ese valor, en términos de promedio,  puede rondar los 2 minutos.
