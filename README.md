@@ -290,6 +290,21 @@ Tampoco disponemos de información sobre las frecuencias y/o horarios de paso de
 
 En las redes de metro observamos distintos grados de implicación de otros servicios de transporte público implicados, de modo que se hace difícil establecer una barrera diferenciadora uniforme. Por ejemplo, las líneas de trenes de cercanía que se implican con el metro en la parte de su recorrido que atraviesa el centro urbano, o las líneas de distintos tipos de tranvía, etc… En los planos que se incluyen hemos evitado estos servicios, aunque su inclusión es tan simple como incorporar al fichero de mapa las líneas correspondientes.
 
+## Implantación:
+
+#### miDijkstra.py
+Se parte de la implantación de una capa básica del algoritmo Dijkstra programada en el módulo miDijkstra.py. Dicho módulo consta de una clase propia de error ErrorNoRuta para informar de rutas imposibles y una clase “Grafo” con el atributo _datos que contendrá la información de nodos y enlaces, y los métodos necesarios para la carga de datos y la consulta de información. Dicha clase redefine los siguientes “Magic Methods”:
+
+    __init__
+    __getitem__
+    __iter__
+
+Además, la clase incluye ciertos métodos de utilidad:
+
+    creaEnlace: para cargar nuevos elementos de nodos / enlace en la estructura del grafo
+    cuentaNodos: Para obtener el número de vértices del grafo
+    cuentaEnlaces: Para obtener el número de aristas del grafo
+    buscaCamino: Para obtener el camino mínimo entre dos vértices del grafo
 
 __EN CONSTRUCCION (Seguiré en breve)__
 
