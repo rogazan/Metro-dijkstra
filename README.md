@@ -306,6 +306,144 @@ Además, la clase incluye ciertos métodos de utilidad:
     cuentaEnlaces: Para obtener el número de aristas del grafo
     buscaCamino: Para obtener el camino mínimo entre dos vértices del grafo
 
+#### grafoMetro.py
+
+Sobre la capa miDijkstra.py se crea la capa grafoMetro.py que será la utilizada para interactuar con el sistema. Contiene la colección de elementos para la construcción del asunto del metro con las particularidades definidas. Contiene las siguientes piezas:
+
+Atributos de módulo con los parámetros de PESOS:
+
+    PESO_ESTACION
+    PESO_TRASBORDO
+    PESO_PASARELA
+
+Y ciertos atributos de módulo con los identificadores de lína, tramo, y comentario de los ficheros de mapa
+
+    CARACTER_PASARELA   = "@"
+    CARACTER_LINEA      = "#"
+    CARACTER_TRAMO      = ">"
+    CARACTER_COMENTARIO = "!"
+
+Clase miGrafo: Gestiona información del plano que se desee. Contiene los siguientes métodos:
+
+Constructor __init__: Construye la instancia de clase invocando a la función _cargaMapa definida en el mismo módulo.
+
+Entrada: String conteniendo el Nombre del mapa a cargar
+
+Genera los siguientes atributos en la instaciación de objetos de la clase:
+    
+    miGrafo: Objeto de clase Grafo definido en el módulo miDijkstra.py
+    lineas: Estructura de datos resultante del proceso del archivo
+
+Ejemplo
+
+    >>> import grafoMetro
+    >>> MAD=grafoMetro.miGrafo("mapas/Paris.txt")
+    >>> print(PAR)
+    <grafoMetro.miGrafo object at 0x000001F685DA3470>
+
+
+infoGrafo: Devuelve un diccionario con información del grafo cargado
+
+Entrada: self
+
+Ejemplo:
+
+    >>> PAR.infoGrafo()
+    {'Mapa': 'mapas/Paris.txt', 'Num Lineas': 17, 'Num Pasarelas': 6, 'Num Estaciones': 303, 'Num Tramos': 23, 'Num. Nodos': 700, 'Num. Enlaces': 1534}
+
+buscaRuta: Devuelve un objeto de clase ruta con la información de la ruta óptima entre dos estaciones
+
+Entrada: self, string origen, string destino
+
+Ejemplo:
+
+    >>> ruta = PAR.buscaRuta("Denfert-Rochereau", "Gare d'Austerlitz")
+    >>> print(type(ruta))
+    <class 'grafoMetro.ruta'>
+    >>> print(ruta)
+    {'origen': 'Denfert-Rochereau', 'destino': "Gare d'Austerlitz", 'numTransbordos': 1, 'numLineas': 2, 'numEstaciones': 8, 'Duracion': 22}
+    
+estacionesComunes: Devuelve una lista de estaciones comunes  en una lista de líneas 
+
+Entrada: self, lista de líneas:
+
+Ejemplo:
+
+    >>> PAR.estacionesComunes(["1", "2", "6"])
+    ['Nation', 'Charles de Gaulle-Étoile']
+
+buscaAleatorio: devuelve una estación al azar entre las existentes en el mapa
+
+Entrada: self
+
+    >>> PAR.buscaAleatorio()
+    'Opéra'
+    >>> PAR.buscaAleatorio()
+    'Avenue Émile Zola'
+
+infoLinea: Devuelve un diccionario con información detallada de una línea concreta
+
+Entrada: self, string con el nombre de línea, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea
+
+Ejemplo:
+
+    >>> PAR.infoLinea("7bis")
+    {'linea': '7bis', 'totEstaciones': 8, 'tramos': [{'tramo': '7bis', 'numEstaciones': 8}]}
+    >>> PAR.infoLinea("7bis", True)
+    {'linea': '7bis', 'totEstaciones': 8, 'tramos': [{'tramo': '7bis', 'numEstaciones': 8}], 'estaciones': ['Bolivar', 'Botzaris', 'Buttes Chaumont', 'Danube', 'Jaurès', 'Louis Blanc', 'Place des Fêtes', 'Pré Saint-Gervais']}
+
+infoTramo: Devuelve un diccionario con información detallada de un tramo concreto de una línea concreta
+
+Entrada: self, string con el nombre de línea, string con el nombre del tramo, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea
+
+Ejemplo:
+
+    >>> PAR.infoTramo("7", '7_Louis_Aragon')
+    {'linea': '7', 'tramo': '7_Louis_Aragon', 'numEstaciones': 5}
+    >>> PAR.infoTramo("7", '7_Louis_Aragon', True)
+    {'linea': '7', 'tramo': '7_Louis_Aragon', 'numEstaciones': 5, 'estaciones': ['Le Kremlin-Bicêtre', 'Maison Blanche', 'Villejuif-Louis Aragon', 'Villejuif-Léo Lagrange', 'Villejuif-Paul Vaillant-Couturier']}
+
+infoEstacion: Devuelve un diccionario con información de una estación concreta
+
+Entrada: self, string con el nombre de la estación
+
+Ejemplo:
+
+    >>> PAR.infoEstacion('Nation')
+    {'estacion': 'Nation', 'lineas': ['1', '2', '6', '9']}
+
+
+listaLineas: Devuelve una lista con todas las lineas de la infraestructura de metro. Cada linea se presenta como un diccionario con su denominación y el número de tramos que la forman.
+
+Entrada: self
+
+Ejemplo
+
+    >>> PAR.listaLineas()
+    [{'linea': '1', 'numTramos': 1}, {'linea': '2', 'numTramos': 1}, {'linea': '3', 'numTramos': 1}, {'linea': '3bis', 'numTramos': 1}, {'linea': '4', 'numTramos': 1}, {'linea': '5', 'numTramos': 1}, {'linea': '6', 'numTramos': 1}, {'linea': '7', 'numTramos': 3}, {'linea': '7bis', 'numTramos': 1}, {'linea': '8', 'numTramos': 1}, {'linea': '9', 'numTramos': 1}, {'linea': '10', 'numTramos': 2}, {'linea': '11', 'numTramos': 1}, {'linea': '12', 'numTramos': 1}, {'linea': '13', 'numTramos': 3}, {'linea': '14', 'numTramos': 1}, {'linea': 'Funicular', 'numTramos': 1}, {'linea': '@P1', 'numTramos': 1}, {'linea': '@P2', 'numTramos': 1}, {'linea': '@P3', 'numTramos': 1}, {'linea': '@P4', 'numTramos': 1}, {'linea': '@P5', 'numTramos': 1}, {'linea': '@P6', 'numTramos': 1}]
+
+listaTramos: Devuelve una lista con todos los tramos de una línea concreta
+
+Entrada: self
+
+Ejemplo:
+
+    >>> PAR.listaTramos("7")
+    ['7', "7_Mairie_d'Ivry", '7_Louis_Aragon']
+
+listaEstaciones: Devuelve una lista con todas las estaciones de la infraestructura
+
+Entrada: self, booleano optativo que indica si el retorno debe ser ordenado (False por defecto)
+
+Ejemplo:
+
+    >>> PAR.listaEstaciones()
+    ['La Chapelle', 'Alma-Marceau', 'Porte de Vanves', ..., 'Bobigny-Pantin-Raymond Queneau', 'Billancourt', 'La Muette']
+    
+    >>> PAR.listaEstaciones(ordenado=True)
+    ['Abbesses', 'Alexandre Dumas', 'Alésia', 'Alma-Marceau', ..., 'Volontaires', 'Voltaire', 'Wagram']
+
+
 __EN CONSTRUCCION (Seguiré en breve)__
 
 ...
