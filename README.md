@@ -483,7 +483,7 @@ Ejemplo:
 
 infoRuta: Devuelve los datos de la ruta
 
-Entrada: self, booleano optativo que inidca si en la respuesta se debe incluiur la estructura de datos de la ruta
+Entrada: self, booleano optativo que indica si en la respuesta se debe incluir la estructura de datos de la ruta
 
 Ejemplo:
 
@@ -516,3 +516,47 @@ Ejemplo:
               'Poissonnière L-7',
               'Cadet L-7',
               'Cadet']}
+
+format: formatea la información de ruta
+
+Entrada: self, parámetro optativo que indica si el formato de salida debe ser "largo" (True, por defecto), parámetro optativo entero que indica la indentación aplicable al formato "largo"
+
+Ejemplo:
+
+    >>> print(ruta.origen)
+    Les Halles
+    >>> print(ruta.destino)
+    Cadet
+    >>>
+    >>> print(ruta.format(indent=2))
+      INICIO en linea 4
+        Les Halles
+        Étienne Marcel
+        Réaumur-Sébastopol
+        Strasbourg-Saint-Denis
+        Château d'Eau
+        Gare de l'Est
+      TRANSBORDO a linea 7
+        Gare de l'Est
+        Poissonnière
+        Cadet
+    >>>
+    >>> print(ruta.format(largo=False))
+    Les Halles (4)
+    Étienne Marcel (4)
+    Réaumur-Sébastopol (4)
+    Strasbourg-Saint-Denis (4)
+    Château d'Eau (4)
+    Gare de l'Est (4)
+    Gare de l'Est (7)
+    Poissonnière (7)
+    Cadet (7)
+
+Además, este módulo grafoMetro contiene las siguientes funciones:
+
+_cargaMapa, Encargada de transformar el fichero de Mapa en el grafo de resolución de rutas y en la estructura de datos de información de líneas
+
+_resumenLinea: Auxiliar de _cargaMapa para dar forma a la información de líneas
+_resumentramo: Auxiliar de _cargaMapa para dar forma a la información de tramos
+
+
