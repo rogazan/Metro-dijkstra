@@ -308,6 +308,8 @@ Además, la clase incluye ciertos métodos de utilidad:
 
 ### grafoMetro.py
 
+NOTA PREVIA SOBRE ORDENACIÓN: Algunos métodos descritos a continuación tienen la opción de retornar listas de estaciones ordenadas por nombre. Puesto que estamos tratando infraestructuras de metro de distintas ciudades podemos encontrar problemas de ordenación causados por los diacrítcos de dichos idiomas. Generalizaremos la solución aportando a la función "sorted()" el argumento "key" con una función lambda que establecerá la ordenación en un critrio basado en una normalización de cadenas de tipo NFD (Normalization Form Canonical Decomposition), lo que es mas que suficiente para este ejercicio.
+
 Sobre la capa miDijkstra.py se crea la capa grafoMetro.py que será la utilizada para interactuar con el sistema. Contiene la colección de elementos para la construcción del asunto del metro con las particularidades definidas. Contiene las siguientes piezas:
 
 Atributos de módulo con los parámetros de PESOS:
