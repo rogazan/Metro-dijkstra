@@ -312,9 +312,9 @@ Sobre la capa miDijkstra.py se crea la capa grafoMetro.py que será la utilizada
 
 Atributos de módulo con los parámetros de PESOS:
 
-    PESO_ESTACION
-    PESO_TRASBORDO
-    PESO_PASARELA
+    PESO_ESTACION   = 2
+    PESO_TRASBORDO  = 3
+    PESO_PASARELA   = 4
 
 Y ciertos atributos de módulo con los identificadores de lína, tramo, y comentario de los ficheros de mapa
 
@@ -383,7 +383,7 @@ Entrada: self
 
 infoLinea: Devuelve un diccionario con información detallada de una línea concreta
 
-Entrada: self, string con el nombre de línea, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea
+Entrada: self, string con el nombre de línea, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea (False por defecto), booleano indicando si la lista de estaciones debe retornar ordenada (False por defecto)
 
 Ejemplo:
 
@@ -394,7 +394,7 @@ Ejemplo:
 
 infoTramo: Devuelve un diccionario con información detallada de un tramo concreto de una línea concreta
 
-Entrada: self, string con el nombre de línea, string con el nombre del tramo, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea
+Entrada: self, string con el nombre de línea, string con el nombre del tramo, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea(False por defecto), booleano indicando si la lista de estaciones debe retornar ordenada (False por defecto)
 
 Ejemplo:
 
@@ -444,9 +444,75 @@ Ejemplo:
     ['Abbesses', 'Alexandre Dumas', 'Alésia', 'Alma-Marceau', ..., 'Volontaires', 'Voltaire', 'Wagram']
 
 
-__EN CONSTRUCCION (Seguiré en breve)__
+numEnlaces: Devuelve el número de aristas del grafo
 
-...
-...
-...
+Entrada: Self
 
+Ejemplo:
+
+    >>> PAR.numEnlaces()
+    1534
+
+numNodos: Devuelve el número de vértices del grafo
+
+Entrada: Self
+
+Ejemplo:
+
+    >>> PAR.numNodos()
+    700
+
+Clase miRuta: Almacena y presenta la información de una ruta calculada. Se invoca desde el método buscaRuta de la clase miGrafo
+
+Constructor __init__: Construye la instancia de clase y genera los siguientes atributos de instancia:
+
+    origen: String con la estación origen de la ruta
+    destino: String con la estación destino de la ruta
+    ruta: lista que contine la estructuctura de datos porporcionada por buscaRuta
+    lineas: Lista con las lineas que participan en la ruta
+    estaciones: Lista con las estaciones que paticipan en la ruta
+    tiempo: Tiempo estimado para el recorrido
+    
+Entrada: Estructura de datos con la información de la ruta:
+
+Ejemplo:
+
+    >>> ruta=PAR.buscaRuta(PAR.buscaAleatorio(), PAR.buscaAleatorio())
+    >>> print(ruta)
+    <grafoMetro.miRuta object at 0x0000026C33B38630>
+
+infoRuta: Devuelve los datos de la ruta
+
+Entrada: self, booleano optativo que inidca si en la respuesta se debe incluiur la estructura de datos de la ruta
+
+Ejemplo:
+
+    >>> ruta=PAR.buscaRuta(PAR.buscaAleatorio(), PAR.buscaAleatorio())
+    >>> from pprint import pprint as pp
+    >>> pp(ruta.infoRuta())
+    {'Duracion': 22,
+     'destino': 'Cadet',
+     'numEstaciones': 8,
+     'numLineas': 2,
+     'numTransbordos': 1,
+     'origen': 'Les Halles'}
+     >>>
+     >>> >>> pp(ruta.infoRuta(True))
+    {'Duracion': 22,
+     'destino': 'Cadet',
+     'numEstaciones': 8,
+     'numLineas': 2,
+     'numTransbordos': 1,
+     'origen': 'Les Halles',
+     'ruta': ['Les Halles',
+              'Les Halles L-4',
+              'Étienne Marcel L-4',
+              'Réaumur-Sébastopol L-4',
+              'Strasbourg-Saint-Denis L-4',
+              "Château d'Eau L-4",
+              "Gare de l'Est L-4",
+              "Gare de l'Est",
+              "Gare de l'Est L-7",
+              'Poissonnière L-7',
+              'Cadet L-7',
+              'Cadet']}
