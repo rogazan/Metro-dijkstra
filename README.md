@@ -1,15 +1,15 @@
 # Metro-dijkstra
-Implantacion de algoritmo dijkstra para obtener el camino mínimo aplicado a infraestructuras de metro de diversas cuidades
+Implantacion de un método de camino mínimo aplicado a infraestructuras de metro de diversas cuidades basado en algoritmo dijkstra 
 
-### Objetivo:
+## Objetivo:
 Se pretende construir una herramienta que calcule rutas óptimas de metro entre un origen y un destino a partir de la carga un fichero mapa de red de metro en formato texto.
 
-### Introducción:
+## Introducción:
 Empezaré diciendo que NO soy especialista en materia de suburbanos ni dispongo de otra información sobre ello que la que se puede encontrar buscando en internet. No me obliga ningún trabajo concreto, tan solo me mueve mi particular interés por la automatización, la aplicación de algoritmos clásicos a los problemas del mundo real, la admiración que me producen los mapas de metro y el deseo de compartirlo con otras personas a las que este trabajo pueda ayudar en su actividad profesional, formativa, o que simplemente tambien sientan una curiosidad parecida a la mia por el desarrollo de soluciones programáticas.
 
 A lo largo del texto haré referencia a diversas instalaciones de metro de ciudades del mundo e incluiré mis propios mapas de algunas de ellas. Algunas las conozco como “usuario mas o menos vanzado” (Madrid, Paris), otras sólo circunstancialmente como “turista” (Londres, Barcelona, Nueva York) y otras no las conozco más allá de la información publicada (la mayoría). Por ello ruego al lector que sea indulgente con las imprecisiones o errores que haya podido cometer en la interpretación de la información publicada y de sus casuísticas particulares.
 
-### Planteamiento:
+## Planteamiento:
 Partiremos de la codificación de un “fichero de mapa” para cada sistema de metro que contendrá una relación de todas las líneas que lo forman y en cada una de ellas se listarán los nombres de las estaciones que la componen en la misma secuencia en que se encuentran en el mapa oficial (con las particularidades que se indicarán a lo largo del presente texto) y de un desarrollo de software que lo interprete y gestione su información.
 
 Cada línea se identificará con un indicador de comienzo de línea (“#”) acompañado del nombre de la  línea y encabezando la lista de estaciones que la forman. Un mismo nombre de estación en dos líneas diferentes se interpreta como un transbordo bidireccional entre ambas líneas. Además, como ya se ha mencionado, los ficheros de los planos de metro se construirán exclusivamente con información pública, (planos oficiales, descripciones de líneas y estaciones que se encuentran en las webs específicas de cada servicio de metropolitano y en otras fuentes públicas de uso común, tipo Wikipedia). A continuación se muestra un ejemplo esquematizado de fichero de un mapa realizado con este criterio:
@@ -263,15 +263,15 @@ Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede 
     Beach 105th Street (A-S3)
     Rockaway Park-Beach 116th Street (A-S3)
 
-### Las excepciones que NO se contemplan
+## Las excepciones que NO se contemplan
 
 #### Zonas de facturación: 
 
-En la redes de metro podemos ver zonas de facturación diferenciada en función de diversos factores: Número de estaciones recorridas, distancia recorrida en kms. , ubicación de las estaciones en zonas específicas o destinos particulares, etc… Nada de eso se tiene en cuenta en el tratamiento en tanto que lo consideraremos una solución topológica  y no un tratamiento con implicación económica. Buscamos la solución al recorrido, no el coste de dicho recorrido. 
+En la redes de metro podemos ver zonas de facturación diferenciada en función de diversos factores: Número de estaciones recorridas, distancia recorrida en kms. , ubicación de las estaciones en zonas específicas o destinos particulares, etc… Nada de eso se tiene en cuenta en el tratamiento en tanto que lo consideraremos un problema topológico  sin considerar su implicación económica. Buscamos la solución al recorrido, no el coste de dicho recorrido. 
 
 #### Implicaciones del horario o del calendario en la topología de las redes:
 
-En las redes de metro podemos ver tratamientos diferenciados en función del la hora del día o de la fecha de calendario, secciones enteras que sólo funcionan en determinados horarios (p.e.  en las horas punta) o en determinadas fechas (p.e. sólo en días laborables), estaciones que cierran en ciertos horarios aunque la línea siga operativa (p.e. en horario nocturno)… Nada de ello se tiene en cuenta, nuevamente lo trataremos como una solución topológica.
+En las redes de metro podemos ver tratamientos diferenciados en función de la hora del día o de la fecha de calendario: secciones enteras que sólo funcionan en determinados horarios (p.e.  en las horas punta) o en determinadas fechas (p.e. sólo en días laborables), estaciones que cierran en ciertos horarios aunque la línea siga operativa (p.e. en horario nocturno)… Nada de ello se tiene en cuenta, nuevamente lo trataremos como una solución topológica.
 
 #### Peso de los tramos:
 No disponemos de esa información para los distintos servicios de metro, por tanto los estableceremos por estimación.
@@ -292,7 +292,7 @@ En las redes de metro observamos distintos grados de implicación de otros servi
 
 ## Implantación:
 
-#### miDijkstra.py
+### miDijkstra.py
 Se parte de la implantación de una capa básica del algoritmo Dijkstra programada en el módulo miDijkstra.py. Dicho módulo consta de una clase propia de error ErrorNoRuta para informar de rutas imposibles y una clase “Grafo” con el atributo _datos que contendrá la información de nodos y enlaces, y los métodos necesarios para la carga de datos y la consulta de información. Dicha clase redefine los siguientes “Magic Methods”:
 
     __init__
@@ -306,7 +306,7 @@ Además, la clase incluye ciertos métodos de utilidad:
     cuentaEnlaces: Para obtener el número de aristas del grafo
     buscaCamino: Para obtener el camino mínimo entre dos vértices del grafo
 
-#### grafoMetro.py
+### grafoMetro.py
 
 Sobre la capa miDijkstra.py se crea la capa grafoMetro.py que será la utilizada para interactuar con el sistema. Contiene la colección de elementos para la construcción del asunto del metro con las particularidades definidas. Contiene las siguientes piezas:
 
@@ -555,7 +555,6 @@ Ejemplo:
 Además, este módulo grafoMetro contiene las siguientes funciones:
 
 _cargaMapa, Encargada de transformar el fichero de Mapa en el grafo de resolución de rutas y en la estructura de datos de información de líneas
-
 _resumenLinea: Auxiliar de _cargaMapa para dar forma a la información de líneas
 _resumentramo: Auxiliar de _cargaMapa para dar forma a la información de tramos
 
