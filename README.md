@@ -621,5 +621,44 @@ Para verificar el sistema haremos una serie de búsquedas aleratorias de rutas p
  
 ![imagen14](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image14.jpg)
 
+Como se puede ver, la ruta calculada y la propuesta por Google Maps son idénticas, y el tiempo calculado es bastante aceptable frente al propuesto por Google Maps (40 min. frente a 35 min.)
 
+Se ha repetido la operación con distintos mapas de metro y con las siguientes consideraciones:
+No se han tenido en cuenta las rutas de las que no se tenía la certeza de que tratábamos del mismo par de datos de origen y destino en ambos sistemas. Esto, que es trivial en los sistemas mas "occidentales", se complica bastante cuando lo probamos en Moscú o Tokyo.
+Se han descartado todas las propuestas de Google Maps que no utilizan en metro para la totalidad de la solución desde el origen al destino.
+Se han descartado todas las propuestas de Google Maps que proponen soluciones "caminando" para ciertas partes de los trayectos. Eso, que es una buena propuesta para la salud del viajero, no es adecuada para esta validación.
+
+Con esto, hemos obtenido los siguientes resultados:
+
+| Mapa | Origen | Destino | Transbordos | Estaciones | Tiempo Calculado | Tiempo propuesto Google | Num. propuesta Google |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Londres | Finchley Road | South Woodford | 1 | 15 | 38 | 44 | 1 |
+| Londres | Woodside Park | Harlesden | 2 | 21 | 55 | 62 | 1 |
+| Londres | Morden | Ickenham | 2 | 28 | 69 | 76 | 1 |
+| Londres | Shepherd's Bush Market | Edgware | 1 | 23 | 54 | 47 | 1 |
+| Paris | Iéna | Fort d'Aubervilliers | 1 | 21 | 50 | 37 | 1 |
+| Paris | Porte de Vanves | Gare de Lyon | 2 | 13 | 39 | 34 | 2 |
+| Paris | Villejuif-Louis Aragon | Botzaris | 2 | 24 | 61 | 48 | 3 |
+| Paris | Grands Boulevards | Porte de Saint-Cloud | 0 | 19 | 41 | 24 | 1 |
+| Madrid | Alcorcon Central | Alameda de Osuna | 2 | 27 | 67 | 74 | 1 |
+| Madrid | Velazquez | Hospital Severo Ochoa | 2 | 18 | 49 | 56 | 1 |
+| Madrid | Colonia Jardín | Juan de la Cierva | 1 | 15 | 38 | 48 | 1 |
+| Madrid | Manuel de Falla | Ciudad del Cine | 1 | 27 | 62 | 67 | 1 |
+| Barcelona | Provença | Can Zam | 1 | 15 | 43 | 36 | 1 |
+| Barcelona | Diagonal | Mercabarna | 1 | 13 | 34 | 32 | 1 |
+| Barcelona | Can Zam | El Prat Estació | 2 | 28 | 69 | 63 | 1 |
+| Barcelona | Glòries | Fondo | 1 | 11 | 25 | 18 | 1 |
+| Moscu | Mitino | Novye Cheryomushki | 2 | 17 | 47 | 55 | 1 |
+| Moscu | Arbatskaya | Bulvar Dmitriya Donskogo | 0 | 15 | 38 | 41 | 1 |
+| Moscu | Maryina Roshcha | Profsoyuznaya | 2 | 12 | 38 | 36 | 1 |
+| Moscu | Andronovka | Rechnoy Vokzal | 1 | 18 | 44 | 68 | 2 |
+| Tokio | Komagome | Minami-Asagaya | 1 | 20 | 48 | 39 | 1 |
+| Tokio | Ueno | Kasumigaseki | 0 | 12 | 27 | 20 | 1 |
+| Tokio | Hibiya | Kinshicho | 1 | 8 | 24 | 25 | 1 |
+| Tokio | Nakanobu | Nishi-Nippori | 2 | 16 | 45 | 44 | 2 |
+| NewYork | Grand Army Plaza | Bay Ridge-95th Street | 2 | 12 | 39 | 30 | 1 |
+| NewYork | 68th Street-Hunter College (6) | Hoyt Street (2-3) | 2 | 10 | 33 | 33 | 1 |
+| NewYork | Longwood Avenue (6) | 75th Street-Elderts Lane (J-Z) | 3 | 25 | 70 | 77 | 2 |
+| NewYork | Baychester Avenue (5) | Avenue U (Q) | 1 | 32 | 72 | 85 | 2 |
+| NewYork | Botanic Garden (S2) | Museum of Natural History (B-C) | 1 | 13 | 34 | 42 | 1 |
 
