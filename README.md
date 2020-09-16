@@ -7,12 +7,12 @@ Se pretende construir una herramienta que calcule rutas óptimas de metro entre 
 ## Introducción:
 Empezaré diciendo que NO soy especialista en materia de suburbanos ni dispongo de otra información sobre ello que la que se puede encontrar buscando en internet. No me obliga ningún trabajo concreto, tan solo me mueve mi particular interés por la automatización, la aplicación de algoritmos clásicos a los problemas del mundo real, la admiración que me producen los mapas de metro y el deseo de compartirlo con otras personas a las que este trabajo pueda ayudar en su actividad profesional, formativa, o que simplemente tambien sientan una curiosidad parecida a la mia por el desarrollo de soluciones programáticas.
 
-A lo largo del texto haré referencia a diversas instalaciones de metro de ciudades del mundo e incluiré mis propios mapas de algunas de ellas. Algunas las conozco como “usuario mas o menos vanzado” (Madrid, Paris), otras sólo circunstancialmente como “turista” (Londres, Barcelona, Nueva York) y otras no las conozco más allá de la información publicada (la mayoría). Por ello ruego al lector que sea indulgente con las imprecisiones o errores que haya podido cometer en la interpretación de la información publicada y de sus casuísticas particulares.
+A lo largo del texto haré referencia a diversas instalaciones de metro de ciudades del mundo e incluiré mis propios mapas de algunas de ellas. Algunas las conozco como “usuario mas o menos avanzado” (Madrid, Paris), otras sólo como “turista” (Londres, Barcelona, Nueva York) y otras no las conozco más allá de la información publicada (la mayoría). Por ello ruego al lector que sea indulgente con las imprecisiones o errores que haya podido cometer en la interpretación de la información publicada y de sus casuísticas particulares.
 
 ## Planteamiento:
 Partiremos de la codificación de un “fichero de mapa” para cada sistema de metro que contendrá una relación de todas las líneas que lo forman y en cada una de ellas se listarán los nombres de las estaciones que la componen en la misma secuencia en que se encuentran en el mapa oficial (con las particularidades que se indicarán a lo largo del presente texto) y de un desarrollo de software que lo interprete y gestione su información.
 
-Cada línea se identificará con un indicador de comienzo de línea (“#”) acompañado del nombre de la  línea y encabezando la lista de estaciones que la forman. Un mismo nombre de estación en dos líneas diferentes se interpreta como un transbordo bidireccional entre ambas líneas. Además, como ya se ha mencionado, los ficheros de los planos de metro se construirán exclusivamente con información pública, (planos oficiales, descripciones de líneas y estaciones que se encuentran en las webs específicas de cada servicio de metropolitano y en otras fuentes públicas de uso común, tipo Wikipedia). A continuación se muestra un ejemplo esquematizado de fichero de un mapa realizado con este criterio:
+Cada línea se identificará con un indicador de comienzo de línea (“#”) acompañado del nombre de la  línea y encabezará la lista de estaciones que la forman. Un mismo nombre de estación en dos líneas diferentes se interpreta como un transbordo bidireccional entre ambas líneas. Además, como ya se ha mencionado, los ficheros de los planos de metro se construirán exclusivamente con información pública, (planos oficiales, descripciones de líneas y estaciones que se encuentran en las webs específicas de cada servicio de metropolitano y en otras fuentes públicas de uso común, tipo Wikipedia). A continuación se muestra un ejemplo esquematizado de fichero de un mapa realizado con este criterio:
 
 ![imagen1](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image1.jpg)
 
@@ -20,13 +20,12 @@ El proceso de lectura del plano trasladará su información a la estructura de d
 
 A partir del grafo, el desarrollo debe ser capaz de encontrar el camino óptimo entre cualquier par de estaciones de una red de metro dada.
 
-Si bien esta es una aproximación válida, la intención es ir más allá y construir una implantación más próxima a la realidad de las redes de metro buscando la manera de 
-automatizar las diversas particularidades que se encuentran en las redes de metropolitano de ciudades del mundo y aplicar criterio mas "humanos" en la elección del camino óptimo.
+Si bien esta es una aproximación válida, la intención es ir más allá y construir un sistema más próxima a la realidad de las redes de metro buscando la manera de automatizar las diversas particularidades que se encuentran en las redes de metropolitano de ciudades del mundo y aplicar criterios mas "humanos" en la elección del camino óptimo.
 
-Una vez expuesto el concepto básico, comenzamos a expandirlo con las particularidades encontradas en los planos reales y el tratamiento diseñado para cada una de ellas.
+Una vez expuesto este concepto básico, comenzamos a expandirlo con las particularidades encontradas en los planos reales y definiremos un tratamiento para cada una de ellas.
 
 #### Estaciones. Visión básica
-Con este planteamiento, cada estación se traducirá en un nodo único con dos atributos: Uno será el “Nombre” y otro será una lista de nodos “vecinos” con los que tiene tramos comunes. Por ejemplo, una instancia de nodo estación podría definirse como:
+Con este planteamiento, cada estación se traduce en un nodo único con dos atributos: Uno será el “Nombre” y otro será una lista de nodos “vecinos” con los que tiene tramos comunes. Por ejemplo, una instancia de nodo estación podría definirse como:
 
     {nombre: ”Gran Vía”, vecinos: [“Tribunal”, “Sol”, “Callao”, “Chueca”]}
 
@@ -34,13 +33,13 @@ Este es un ejemplo real del metro de Madrid. Los dos primeros vecinos pertenecen
 
 
 #### Estaciones. revisión compleja y transbordos
-Si establecemos cada estación como un nodo del grafo y damos un peso similar a todos los tramos que enlazan las estaciones, estaremos ignorando el coste que suponen los incómodos transbordos que todos sufrimos.
+Si establecemos cada estación como un nodo del grafo y damos un peso similar a todos los tramos que enlazan las estaciones (entendiendo por peso el tiempo que invierte el metro en recorrer el trayecto entre dos estaciones), estaremos ignorando el coste que suponen los incómodos transbordos que todos sufrimos.
 
-Imaginemos un trazado similar al del gráfico siguiente y que el peso del tramo (entendido como el tiempo que invierte el metro en recorrer el trayecto entre dos estaciones) es igual en todos los casos:
+Imaginemos un trazado similar al del gráfico siguiente y que el peso del tramo es igual en todos los casos:
 
 ![imagen2](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image2.jpg)
 
-Si solo contemplamos los enlaces entre las estaciones sin más consideración, un trayecto desde “Estación 1” a “Estación 5” se podrá calcular como una ruta en la secuencia:
+Si solo contemplamos los enlaces entre las estaciones sin otra consideración, un trayecto desde “Estación 1” a “Estación 5” se podrá calcular como una ruta en la secuencia:
 
     1 > 2 > 3 > 4 >  5 (4 tramos de igual peso), 
 
@@ -48,17 +47,25 @@ Pero también podrá calcularse como otra ruta en la secuencia:
 
     1 > 2 > 7 > 4 > 5 (igualmente 4 tramos del mismo peso).
 
-De esta manera se obtienen dos trayectos de peso idéntico, dado que el trayecto se ha calculando exclusivamente en función del número de estaciones recorridas:
+De esta manera se obtienen dos trayectos de peso idéntico, dado que el trayecto se ha calculando exclusivamente en función del número de estaciones recorridas, esto es:
 
     Trayecto = f(num_estaciones)
 
-Pero cualquier persona que haya usado el metro sabe que hay una enorme diferencia entre hacer un recorrido de 4 estaciones sin cambiar de línea que hacer el mismo viaje, con el mismo número de tramos, pero con dos trasbordos en el medio, es decir, que un trayecto optimo adaptado al viajero “humano” debería replantearse como:
+Pero cualquier persona que haya usado el metro sabe que hay una enorme diferencia entre hacer un recorrido de 4 estaciones sin cambiar de línea que hacer el mismo viaje, con el mismo número de tramos, pero con dos trasbordos en el medio. Esto hace suponer que un trayecto optimo adaptado al viajero “humano” debería replantearse como:
 
     trayecto = f(num_estaciones, num_transbordos).
 
-Una primera idea puede llevar a pensar en gestionar los pesos de los enlaces, pero se descarta inmediatamente dado que el peso entre dos nodos del grafo debe ser estático “per se” y no cabe ninguna revaloración en base a lo que se haya hecho antes o lo que se hará después de recorrer el tramo.
+Una primera idea puede llevar a pensar en gestionar de algún modo los pesos de los enlaces, pero se descarta inmediatamente dado que el peso entre dos nodos del grafo es estático “per se” y no cabe ninguna revaloración en base a lo que se haya hecho antes o lo que se hará después de recorrer el tramo.
 
-Para dar solución al tema de los transbordos se redefine el concepto de “Estación” a otro más complejo, de modo que ya no se tratará de un nodo único sino que pasará a ser un conjunto de nodos con enlaces internos entre ellos. Así, una estación tendrá un nodo que podemos denominar “vestíbulo”, cuyo nombre será el de la propia estación, y N nodos que podemos denominar “andenes” (tantos como líneas pasen por la estación), El nombre de un andén estará formado por la concatenación del nombre de la estación y de la línea a la que presta servicio. En cuanto a los enlaces internos, el nodo vestíbulo contará con enlaces bidireccionales con todos los andenes, pero no existirá ningún enlace entre los distintos andenes de la misma estación. Se sintetiza en el gráfico siguiente en el que se ve una estación en la que convergen dos líneas:
+La solución propusesta para el tema de los transbordos se redefine el concepto de “Estación” a otro más complejo, de modo que ya no se tratará de un nodo único. Ahora lo convertiremos en un conjunto de nodos con enlaces internos entre ellos. Así, una estación tendrá dos elementos:
+
+Un nodo que podemos denominar “vestíbulo” cuyo nombre será el de la propia estación
+
+N nodos que podemos denominar “andenes” (tantos como líneas pasen por la estación). El nombre de un andén estará formado por la concatenación del nombre de la estación y de la línea a la que presta servicio. 
+
+En cuanto a los enlaces internos, el nodo vestíbulo contará con enlaces bidireccionales con todos los andenes, pero no existirá ningún enlace entre los distintos andenes de la misma estación.
+
+Este modelo se sintetiza en el gráfico siguiente, en el que se ve una estación en la que convergen dos líneas:
 
 ![imagen3](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image3.jpg)
 
@@ -68,7 +75,7 @@ Con esta interpretación, una lista de los nodos directamente asociados a la est
     {Nombre: “Estacion2-Roja”, Vecinos : [“Estacion2”, “Estacion1-Roja”, “Estacion3-Roja”]},
     {Nombre: “Estacion2-Azul”, Vecinos : [“Estacion2”, “Estacion1-Azul”, “Estacion3-Azul”]}
 
-Se debe considerar que el viajero siempre accede a la red de metro a través del vestíbulo de la estación de origen y lo abandona a través del vestíbulo de la estación de destino y además debe especificarse un peso diferente para los tramos Vestíbulo–andén (los que se recorren caminando) y para los tramos de metro entre andenes de estaciones contiguas (los que se recorren en tren). Considerando las siguientes abreviaturas:
+Se debe considerar que el viajero siempre accede a la red de metro a través del vestíbulo de la estación de origen y lo abandona a través del vestíbulo de la estación de destino. Además debe especificarse un peso diferente para los tramos Vestíbulo–andén (los que se recorren caminando) y para los tramos de metro entre andenes de estaciones contiguas (los que se recorren en tren). Considerando las siguientes abreviaturas:
 
     E = Estación
     V = Vestíbulo
@@ -91,7 +98,8 @@ Es evidente que el algoritmo decidirá el Camino1 como el adecuado por su peso i
 
     diferencia = 4 * Pva
 
-Que es justamente el peso que asignamos a los dos transbordos (2 * Pva por cada transbordo)
+Que es justamente el peso que asignamos a los dos transbordos (2 * Pva por cada transbordo).
+
 Con carácter general tendremos un cálculo para cualquier camino X:
 
     CaminoX = entrada + salida + suma(Transbordos) + suma(Recorridos en trenes)
@@ -100,9 +108,9 @@ Con carácter general tendremos un cálculo para cualquier camino X:
 
     Siendo num_estaciones el número de estaciones por las que se pasa, incluidas la de origen, la de destino y las de transbordos.
 
-Esto se ajusta razonablemente al entendimiento de usuario de lo que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento, y dado su peso elevado, el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando en número de estaciones recorridas con menos transbordos sea significativamente superior al del recorrido con mas transbordos).
+Esto se ajusta razonablemente al "esfuerzo" que significa un transbordo y de la forma en que se accede y se abandona el sistema de metro. Con este planteamiento, y dado su peso relativamente elevado, el sistema sólo recurrirá a los transbordos cuando no haya otra solución (o cuando el número de estaciones recorridas con menos transbordos sea significativamente mayor que el recorrido con mas transbordos).
 
-Nótese que este tratamiento se hace “por software”, y no implica ningún cambio en la codificación del fichero de mapa.
+Nótese que este tratamiento se hace “por software”, y no implica ningún cambio en la estructura del fichero de mapa.
 
 NOTA SOBRE RENDIMIENTO:
 El número de nodos y de enlaces por estación se incrementa notablemente frente a la visión simplista de un nodo único por estación::
@@ -119,17 +127,17 @@ Este incremento en el número de nodos y enlaces tiene su lado negativo en el or
 
 
 #### Pasarelas entre estaciones:
-los transbordos siempre se realizan entre andenes de una misma estación, pero aún podemos ver que existe otra clase de transbordos que se hacen entre estaciones de nombres diferentes, (lo podemos ver en el metro de Madrid entre las estaciones de Embajadores y Acacias, en el de Barcelona entre Provença y Diagonal y muchísimos más. Los más complejos, como Nueva York o Moscú tienen montones de ellos). Aquí definiremos un concepto que denominaremos “pasarela” y que trataremos exactamente igual que una línea de metro que solo tenga dos estaciones en su recorrido. La única diferencia en su tratamiento radica en la posibilidad de asignar un peso particular para estos recorridos, para lo que añadiremos un identificador de pasarela "@" al nombre la linea.
+los transbordos siempre se realizan entre andenes de una misma estación, pero aún podemos ver que existe otra clase de transbordos que se hacen entre estaciones de nombres diferentes (ejemplo en el metro de Madrid entre las estaciones de Embajadores y Acacias, en el de Barcelona entre Provença y Diagonal y muchísimos más. Los más complejos, como Nueva York o Moscú tienen montones de ellos). Aquí definiremos un concepto que denominaremos “pasarela” y que trataremos exactamente igual que una línea de metro que solo tenga dos estaciones en su recorrido. La única diferencia en su tratamiento radica en la posibilidad de asignar un peso particular para estos recorridos, para lo que añadiremos un identificador de pasarela "@" al nombre la linea.
 
 ![imagen4](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image4.jpg)
 
-Nótese que el uso de una pasarela es relativamente costoso. En el gráfico anterior vemos que una parte de un recorrido que incluya transbordo por la pasarela desde la línea azul a la línea roja implicará, siendo Pp el peso propio del tramo pasarela:
+Nótese que el uso de una pasarela es notablemente costoso. En el gráfico anterior vemos que una parte de un recorrido que incluya transbordo por la pasarela desde la línea azul a la línea roja implicará, siendo Pp el peso propio del tramo pasarela:
 
     Azul-a-Roja = Pav + Pav + Pp + Pav + Pav
     Azul-a-Roja = 4 * Pav + Pp
 
 #### Líneas circulares:
-Existen líneas que son circulares, esto es, que establecida una estación cualquiera como principio de línea y otra de fin de línea, aún existe un tramo bidireccional que une ambas. En el metro de Madrid podemos ver ejemplos en la linea 6 (gris) y en la Metrosur (verde oliva). La propia explicación sugiere la solución: En la descripción de la línea en el fichero de mapa pondremos una referencia adicional tras la última estación con el nombre de la primera, con lo que quedará definido correctamente: 
+Existen líneas que son circulares, esto es, que establecida una estación cualquiera como principio de línea y otra de fin de línea, aún existe un tramo bidireccional que une ambas. En el metro de Madrid podemos ver ejemplos en la linea 6 (gris) y en la 12 (verde oliva). La propia explicación sugiere la solución: En la descripción de la línea en el fichero de mapa pondremos una referencia adicional tras la última estación con el nombre de la primera, con lo que quedará definido correctamente: 
 
 ![imagen5](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image5.jpg)
 
@@ -143,12 +151,12 @@ La solución es similar a la de la línea circular, pero cerrando sobre la estac
 ![imagen7](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image7.jpg)
 
 #### Tramos:
-En condiciones normales una línea se describe como una relación de estaciones en secuencia desde la primera a la última, pero hay situaciones, como veremos más adelante, en las que conviene fraccionar la línea en tramos para gestionar algunas particularidades. La descripción de un tramo se hace dentro del contexto de la línea con un indicador de comienzo de tramo (">") en el que recibe un nombre único dentro de la línea y se extenderá hasta el siguiente inicio de tramo o hasta el final de la línea. Si no se especifica un tramo tras la identificación de la línea se entenderá que implícitamente existe un tramo primero que se extiende desde la identificación de la línea hasta la identificación de un tramo o hasta el final de la línea, lo que supone la existencia de un primer (y tal vez único) tramo que coincide con la propia línea. Por último, la conexión de un tramo con el resto de la línea se resuelve teniendo al menos una estación en común con el resto de la línea. El siguiente ejemplo muestra esta particularidad:
+En condiciones normales una línea se describe como una relación de estaciones en secuencia desde la primera a la última, pero hay situaciones, como veremos más adelante, en las que conviene fraccionar la línea en tramos para gestionar algunas particularidades. La descripción de un tramo se hace dentro del contexto de la línea con un indicador de comienzo de tramo (">") en el que recibe un nombre único dentro de la línea y se extenderá hasta el siguiente inicio de tramo o hasta el final de la línea. Si no se especifica un tramo tras la identificación de la línea se entenderá que implícitamente existe un tramo primero que se extiende desde la identificación de la línea hasta la identificación de un tramo o hasta el final de la línea. Esto supone la existencia de un primer (y tal vez único) tramo que coincide con la propia línea. Por último, la conexión de un tramo con el resto de la línea se resuelve teniendo al menos una estación en común con el resto de la línea. El siguiente ejemplo muestra esta particularidad:
 
 ![imagen8](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image8.jpg)
 
 #### Tramos unidireccionales:
-Hasta ahora hemos supuesto que los enlaces entre dos estaciones contiguas de un misma línea son siempre bidireccionales, pero se dan casos en lo que esta suposición NO es cierta. Si observamos el recorte del plano de metro de París mostrado en la particularidad de líneas parcialmente circulares, podemos observar que en ese anillo se circula en una única dirección. Para resolver esto mantendremos la bidireccionalidad como acción por defecto entre todas las estaciones y anotaremos la excepción de unidireccionalidad sólo para aquellas estaciones afectadas por ello, agregando al nombre de la estación el modificador “| U”, lo que indicará que la circulación entre la estación PREVIA y la que contiene el modificador se produce en una única dirección (de la PREVIA a la que contiene el modificador). El ejemplo en la línea 7bis de París quedará como se muestra a continuación:
+Hasta ahora hemos supuesto que los enlaces entre dos estaciones contiguas de una misma línea son siempre bidireccionales, pero se dan casos en los que esta suposición NO es cierta. Si observamos el recorte del plano de metro de París mostrado en la particularidad de líneas parcialmente circulares, podemos observar que en ese anillo se circula en una única dirección. Para resolver esto mantendremos la bidireccionalidad como acción por defecto entre todas las estaciones y anotaremos la excepción de unidireccionalidad sólo para aquellas estaciones afectadas por ello, agregando al nombre de la estación el modificador “| U”, lo que indicará que la circulación entre la estación PREVIA y la que contiene el modificador se produce en una única dirección (de la PREVIA a la que contiene el modificador). El ejemplo en la línea 7bis de París quedará como se muestra a continuación:
 
 ![imagen9](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image9.jpg)
 
@@ -158,7 +166,7 @@ El caso previo se da al final de una línea, pero podemos encontrar otros casos 
 
 ![imagen10](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image10.jpg)
 
-En este caso recurriremos al modificador de unidireccionalidad (“| U”) y a la definición de tramos, que podemos aplicar de distintas maneras, aunque el resultado de todas ellas repercutirá de la misma manera en el grafo. Por ejemplo podemos definir la línea de principio a fin incluyendo el recorrido de ida de la bifurcación y especificando los enlaces unidireccionales de la sección bifurcada y agregaremos un tramo que refleje sólo el recorrido bifurcado de vuelta:
+En este caso recurriremos al modificador de unidireccionalidad (“| U”) y a la definición de tramos, que podemos aplicar de distintas maneras, aunque el resultado de todas ellas repercutirá de la misma manera en el grafo. Por ejemplo podemos definir la línea de principio a fin incluyendo el recorrido de ida y especificando los enlaces unidireccionales de la sección bifurcada y agregaremos un tramo que refleje sólo el recorrido bifurcado de vuelta:
     
     # Linea 10
     …
@@ -179,11 +187,11 @@ En este caso recurriremos al modificador de unidireccionalidad (“| U”) y a l
 Los tramos ayudan a definirlo de varias maneras. Por ejemplo, otra alternativa sería definir un tramo desde el inicio de línea hasta el comienzo de la sección bifurcada, otro tramo desde el fin de la sección bifurcada hasta el fin de la línea y otros dos tramos para la sección bifurcada: uno con el recorrido de ida en esa sección indicando la unidireccionalidad de los enlaces entre estaciones y otro con el recorrido de vuelta de la misma sección, indicando igualmente la unidireccionalidad de estos enlaces.
 
 #### Bifurcaciones y líneas con destinos múltiples:
-es frecuente encontrar líneas que se bifurcan para alcanzar destinos diferentes con algún tipo de alternancia, incluso con un número considerable de bifurcaciones en la misma línea. Un ejemplo de múltiples bifurcaciones en la línea Metropolitan del metro de Londres es el siguiente:
+Es frecuente encontrar líneas que se bifurcan para alcanzar destinos diferentes con algún tipo de alternancia, incluso con un número considerable de bifurcaciones en la misma línea. Un ejemplo de múltiples bifurcaciones en la línea Metropolitan del metro de Londres es el siguiente:
 
 ![imagen11](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image11.jpg)
 
-Podemos darle respuesta definiendo tantos tramos como sea necesario y con el fraccionamiento que más nos convenga. Una posible solución de tramos sería:
+Podemos darle respuesta definiendo tantos tramos como sea necesario con el fraccionamiento que más nos convenga. Una posible solución de tramos sería:
 
     # Metropolitan
     Amersham
@@ -221,31 +229,29 @@ Podemos darle respuesta definiendo tantos tramos como sea necesario y con el fra
     Uxbridge
 
 #### Estaciones distintas con el mismo nombre:
-Esta es una situación frecuente en el metro de New York: varias estaciones comparten el mismo nombre por la única razón de estar en la misma calle, pero no tienen ningún tipo de enlace entre ellas y además pueden estar a una distancia considerable unas de otras. 
+Esta es una situación frecuente en el metro de New York: varias estaciones comparten el mismo nombre en el plano por la única razón de estar en la misma calle, pero no tienen ningún tipo de enlace entre ellas y además pueden estar a una distancia considerable unas de otras. 
 
 ![imagen12](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image12.jpg)
 
-El fragmento muestra 5 estaciones denominadas “23st” y otras 3 denominadas “14 St” Observando con más atención vemos que el mismo plano nos informa también de las líneas que pasan por cada una de las duplicadas. La solución pasa por tratarlas como estaciones independientes (porque es lo que realmente son), asignando un nombre formado por los dos elementos que figuran en el mapa: el nombre de la estación y las líneas que circulan por ella, lo que resultará en unos nombres de estaciones del tipo:
+El fragmento muestra 5 estaciones denominadas “23 St” y otras 3 denominadas “14 St” Observando con más atención vemos que el mismo plano nos informa también de las líneas que pasan por cada una de las duplicadas. La solución pasa por tratarlas como estaciones independientes (porque es lo que realmente son), asignando un nombre que concatena los dos elementos que figuran en el mapa: el nombre de la estación y las líneas que circulan por ella, lo que resultará en unos nombres de estaciones del tipo:
 
-    23 St [C-E]
-    23 St [1]
-    23 St [F-M]
-    23 St [R-W]
-    23 St [6]
-    14 St [A-C-E]
-    14 St [1-2-3]
-    14 St [F-M]
-
-Nótese que el plano incluye una pasarela entre “14 St [1-2-3]” y “14 St [F-M]”, que deberá definirse en el fichero de mapa.
+    23 St (C-E)
+    23 St (1)
+    23 St (F-M)
+    23 St (R-W)
+    23 St (6)
+    14 St (A-C-E)
+    14 St (1-2-3)
+    14 St (F-M)
 
 #### Líneas locales y líneas express:
-En ciertas instalaciones de metro se definen líneas locales (las que tiene parada en todas las estaciones de la línea) y líneas express (las que siguen el mismo recorrido pero sólo tienen parada en determinadas estaciones significativas). Ejemplos de ello se encuentran en las líneas 5, 7, R,...del metro de New york que cuentan conn la correspondientes variantes Local y Express. Puesto que los planos originales ya las identifican "casi" como líneas diferentes, se hará lo mismo en el modelo de plano aquí definido. Debe entenderse que las estaciones comunes de ambas líneas se interpretan como transbordos. De esta manera, y si la ponderación de pesos lo justifica, se puede obtener un recorrido que utilice parcialmente la variante express, un transbordo a la variante local y un fin de trayecto sobre la local, como se hace en la realidad. A continuación se muestra la definición para la línea 7 de New york:
+En ciertas instalaciones de metro se definen líneas locales (las que tiene parada en todas las estaciones de la línea) y líneas express (las que siguen el mismo recorrido pero sólo tienen parada en determinadas estaciones significativas). Ejemplos de ello se encuentran en las líneas 5, 7, R,...del metro de New york que cuentan conn la correspondientes variantes Local y Express. Puesto que los planos originales ya las identifican "casi" como líneas diferentes, se hará lo mismo en el modelo de plano aquí definido. Debe entenderse que las estaciones comunes de ambas líneas se interpretan como transbordos. De esta manera, y si la ponderación de pesos lo justifica, se puede obtener un recorrido que utilice parcialmente la variante express, un transbordo a la variante local y un fin de trayecto sobre la local. A continuación se muestra la definición para la línea 7 de New york:
 
 ![imagen13](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image13.jpg)
 
 
 #### Líneas con tramos inconexos:
-Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede entenderse como un “cajón de sastre” donde se incluyen pequeñas secciones dispersas para enlaces varios. Nuevamente remitimos al metro de New York para verlo en la línea S, que consta de tres secciones no conectadas entre ellas e distintas partes de la ciudad. Lo solucionaremos generando tantas líneas independientes como secciones de la línea existan en la realidad, a las que se dará un nombre que haga referencia a la nomenclatura original. La siguiente definición muestra esta solución:
+Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede entenderse como un “cajón de sastre” donde se incluyen pequeñas secciones dispersas para enlaces varios. Nuevamente remitimos al metro de New York para verlo en la línea S, que consta de tres secciones no conectadas entre ellas en distintas partes de la ciudad. Lo solucionaremos generando tantas líneas independientes como secciones de la línea existan en la realidad, a las que se dará nombres que hagan referencia a la nomenclatura original. La siguiente definición muestra esta solución:
 
     # S1
     Times Square-42nd Street (N-Q-R-S1-W-1-2-3-7-7E)
@@ -267,30 +273,31 @@ Se trata de líneas formadas por varios tramos sin conexión entre ellos. Puede 
 
 #### Zonas de facturación: 
 
-En la redes de metro podemos ver zonas de facturación diferenciada en función de diversos factores: Número de estaciones recorridas, distancia recorrida en kms. , ubicación de las estaciones en zonas específicas o destinos particulares, etc… Nada de eso se tiene en cuenta en el tratamiento en tanto que lo consideraremos un problema topológico  sin considerar su implicación económica. Buscamos la solución al recorrido, no el coste de dicho recorrido. 
+En la redes de metro podemos ver zonas de facturación diferenciada en función de diversos factores: Número de estaciones recorridas, distancia recorrida en kms., ubicación de las estaciones en zonas específicas o destinos particulares, etc… Nada de eso se tiene en cuenta en el tratamiento en tanto que lo consideraremos un problema topológico sin tener en cuenta su implicación económica. Buscamos la solución a la ruta del recorrido, no el coste de dicho recorrido. 
 
 #### Implicaciones del horario o del calendario en la topología de las redes:
 
-En las redes de metro podemos ver tratamientos diferenciados en función de la hora del día o de la fecha de calendario: secciones enteras que sólo funcionan en determinados horarios (p.e.  en las horas punta) o en determinadas fechas (p.e. sólo en días laborables), estaciones que cierran en ciertos horarios aunque la línea siga operativa (p.e. en horario nocturno)… Nada de ello se tiene en cuenta, nuevamente lo trataremos como una solución topológica.
+En las redes de metro podemos ver tratamientos diferenciados en función de la hora del día o de la fecha de calendario: secciones enteras que sólo funcionan en determinados horarios (p.e.  en las horas punta) o en determinadas fechas (p.e. sólo en días laborables), estaciones que cierran en ciertos horarios aunque la línea siga operativa (p.e. en horario nocturno)… Nada de ello se tiene en cuenta, nuevamente lo trataremos como una solución topológica de "horario completo".
 
 #### Peso de los tramos:
 No disponemos de esa información para los distintos servicios de metro, por tanto los estableceremos por estimación.
 
 Consideraremos que el tiempo que se invierte en el recorrido entre dos estaciones, incluido el que el tren permanece parado para el intercambio de pasajeros en cada estación, es constante para toda la red. La experiencia demuestra que es una suposición razonable y que ese valor, en términos de promedio,  puede rondar los 2 minutos.
 
-Tampoco estableceremos pesos específicos para los recorridos vestíbulo-anden o anden-vestíbulo. Igualmente estableceremos  un valor basado en la experiencia de 3 minutos para cada uno de ellos, lo que supone que un acceso al servicio de metro (vestíbulo-anden) estima 3 minutos hasta que se aborda el servicio. Y que un transbordo (anden-vestíbulo + vestíbulo-anden) será de 6 minutos.
+Tampoco estableceremos pesos específicos para los recorridos vestíbulo-anden o anden-vestíbulo. Igualmente estableceremos un valor basado en la experiencia de 3 minutos para cada uno de ellos. Eso supone que un acceso al servicio de metro (vestíbulo-anden) se estima 3 minutos hasta que se aborda el servicio, y que un transbordo (dcontado desde que se abandona un tren hasta que se aborda el siguiente) será de 6 minutos.
 
-En cuanto al peso de recorrido de las pasarelas, se trata de un parámetro muy variable que ponderaremos, en base a las muy limitadas experiencias, en 4 minutos. Debe entenderse que el uso completo de una pasarela implica los correspondientes transbordos en cada extremo.
+En cuanto al peso de recorrido de las pasarelas, se trata de un parámetro muy variable que ponderaremos, en base a las muy limitadas experiencias, en 4 minutos. Debe entenderse que el uso completo de una pasarela implica, además, los correspondientes transbordos en cada extremo.
 
 #### Frecuencias:
 
-Tampoco disponemos de información sobre las frecuencias y/o horarios de paso de los trenes que podamos generalizar, por lo tanto no podemos establecer esos tiempos. Además, el método utilizado para los distintos servicios varía enormemente: En ciertos casos se calcula en base a intervalos o frecuencias por tramo horario, en otros se publican tablas completas de horarios de paso por estación y en otros casos se funciona con un proceso mixto entre ambos. Y puesto que no tenemos forma de estimar el tiempo de espera en andén, entenderemos que ese tiempo queda absorbido en los distintos pesos estimados en el apartado anterior.
+Tampoco disponemos de información sobre las frecuencias y/o horarios de paso de los trenes, por lo tanto no podemos establecer esos tiempos. Además, el método utilizado para los distintos servicios varía enormemente: En ciertos casos se calcula en base a intervalos o frecuencias por tramo horario, en otros se publican tablas completas de horarios de paso por estación y en otros casos se funciona con un proceso mixto entre ambos. Y puesto que no tenemos forma de estimar el tiempo de espera en andén, entenderemos que ese tiempo queda absorbido en los distintos pesos estimados en el apartado anterior.
 
 #### Otros servicios implicados:
 
-En las redes de metro observamos distintos grados de implicación de otros servicios de transporte público implicados, de modo que se hace difícil establecer una barrera diferenciadora uniforme. Por ejemplo, las líneas de trenes de cercanía que se implican con el metro en la parte de su recorrido que atraviesa el centro urbano, o las líneas de distintos tipos de tranvía, etc… En los planos que se incluyen hemos evitado estos servicios, aunque su inclusión es tan simple como incorporar al fichero de mapa las líneas correspondientes.
+En las redes de metro observamos distintos grados de implicación de otros servicios de transporte público de modo que se hace difícil establecer una barrera diferenciadora uniforme. Por ejemplo, las líneas de trenes de cercanías que se utilizan casi como parte del servicio de de metro en la parte de su recorrido que atraviesa el centro urbano, o las líneas de distintos tipos de tranvía, etc… En los planos que se incluyen hemos evitado estos servicios complementarios y nos hemos quedado con aquellos que el proveedor denomina "metro"
 
 ## Implantación:
+La implantación completa se hace en lenguaje Python3 .
 
 ### miDijkstra.py
 Se parte de la implantación de una capa básica del algoritmo Dijkstra programada en el módulo miDijkstra.py. Dicho módulo consta de una clase propia de error ErrorNoRuta para informar de rutas imposibles y una clase “Grafo” con el atributo _datos que contendrá la información de nodos y enlaces, y los métodos necesarios para la carga de datos y la consulta de información. Dicha clase redefine los siguientes “Magic Methods”:
@@ -308,7 +315,9 @@ Además, la clase incluye ciertos métodos de utilidad:
 
 ### grafoMetro.py
 
-NOTA PREVIA SOBRE ORDENACIÓN: Algunos métodos descritos a continuación tienen la opción de retornar listas de estaciones ordenadas por nombre. Puesto que estamos tratando infraestructuras de metro de distintas ciudades podemos encontrar problemas de ordenación causados por los diacrítcos de dichos idiomas. Generalizaremos la solución aportando a la función "sorted()" el argumento "key" con una función lambda que establecerá la ordenación en un critrio basado en una normalización de cadenas de tipo NFD (Normalization Form Canonical Decomposition), lo que es mas que suficiente para este ejercicio.
+NOTA PREVIA SOBRE ORDENACIÓN: Algunos métodos descritos a continuación tienen la opción de retornar listas de estaciones ordenadas por nombre. Puesto que estamos tratando infraestructuras de metro de distintas ciudades, podemos encontrar problemas de ordenación causados por los diacrítcos propios de dichos idiomas. Generalizaremos la solución aportando a la función "sorted()" el argumento "key" con una función lambda que ordenará en base a la normalización de tipo NFD (Normalization Form Canonical Decomposition), lo que es mas que suficiente para este ejercicio.
+
+    ordenada = sorted(sinOrdenar, key=lambda x: unicodedata.normalize("NFD", x))
 
 Sobre la capa miDijkstra.py se crea la capa grafoMetro.py que será la utilizada para interactuar con el sistema. Contiene la colección de elementos para la construcción del asunto del metro con las particularidades definidas. Contiene las siguientes piezas:
 
@@ -318,14 +327,15 @@ Atributos de módulo con los parámetros de PESOS:
     PESO_TRASBORDO  = 3
     PESO_PASARELA   = 4
 
-Y ciertos atributos de módulo con los identificadores de lína, tramo, y comentario de los ficheros de mapa
+Y ciertos atributos de módulo para especificar los identificadores de lína, tramo, y comentario de los ficheros de mapa
 
     CARACTER_PASARELA   = "@"
     CARACTER_LINEA      = "#"
     CARACTER_TRAMO      = ">"
     CARACTER_COMENTARIO = "!"
 
-Clase miGrafo: Gestiona información del plano que se desee. Contiene los siguientes métodos:
+### Clase miGrafo
+Gestiona información del plano que se desee. Contiene los siguientes métodos:
 
 Constructor __init__: Construye la instancia de clase invocando a la función _cargaMapa definida en el mismo módulo.
 
@@ -344,7 +354,8 @@ Ejemplo
     <grafoMetro.miGrafo object at 0x000001F685DA3470>
 
 
-infoGrafo: Devuelve un diccionario con información del grafo cargado
+#### infoGrafo:
+Devuelve un diccionario con información del grafo cargado
 
 Entrada: self
 
@@ -353,7 +364,8 @@ Ejemplo:
     >>> PAR.infoGrafo()
     {'Mapa': 'mapas/Paris.txt', 'Num Lineas': 17, 'Num Pasarelas': 6, 'Num Estaciones': 303, 'Num Tramos': 23, 'Num. Nodos': 700, 'Num. Enlaces': 1534}
 
-buscaRuta: Devuelve un objeto de clase ruta con la información de la ruta óptima entre dos estaciones
+##### buscaRuta:
+Devuelve un objeto de clase ruta con la información de la ruta óptima entre dos estaciones
 
 Entrada: self, string origen, string destino
 
@@ -365,7 +377,8 @@ Ejemplo:
     >>> print(ruta)
     {'origen': 'Denfert-Rochereau', 'destino': "Gare d'Austerlitz", 'numTransbordos': 1, 'numLineas': 2, 'numEstaciones': 8, 'Duracion': 22}
     
-estacionesComunes: Devuelve una lista de estaciones comunes  en una lista de líneas 
+#### estacionesComunes:
+Devuelve una lista de estaciones comunes  en una lista de líneas 
 
 Entrada: self, lista de líneas:
 
@@ -374,7 +387,8 @@ Ejemplo:
     >>> PAR.estacionesComunes(["1", "2", "6"])
     ['Nation', 'Charles de Gaulle-Étoile']
 
-buscaAleatorio: devuelve una estación al azar entre las existentes en el mapa
+#### buscaAleatorio:
+Devuelve una estación al azar entre las existentes en el mapa
 
 Entrada: self
 
@@ -383,7 +397,8 @@ Entrada: self
     >>> PAR.buscaAleatorio()
     'Avenue Émile Zola'
 
-infoLinea: Devuelve un diccionario con información detallada de una línea concreta
+#### infoLinea:
+Devuelve un diccionario con información detallada de una línea concreta
 
 Entrada: self, string con el nombre de línea, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea (False por defecto), booleano indicando si la lista de estaciones debe retornar ordenada (False por defecto)
 
@@ -394,7 +409,8 @@ Ejemplo:
     >>> PAR.infoLinea("7bis", True)
     {'linea': '7bis', 'totEstaciones': 8, 'tramos': [{'tramo': '7bis', 'numEstaciones': 8}], 'estaciones': ['Bolivar', 'Botzaris', 'Buttes Chaumont', 'Danube', 'Jaurès', 'Louis Blanc', 'Place des Fêtes', 'Pré Saint-Gervais']}
 
-infoTramo: Devuelve un diccionario con información detallada de un tramo concreto de una línea concreta
+#### infoTramo:
+Devuelve un diccionario con información detallada de un tramo concreto de una línea concreta
 
 Entrada: self, string con el nombre de línea, string con el nombre del tramo, booleano indicando si el retorno debe incluir una lista de las estaciones de la línea(False por defecto), booleano indicando si la lista de estaciones debe retornar ordenada (False por defecto)
 
@@ -405,7 +421,8 @@ Ejemplo:
     >>> PAR.infoTramo("7", '7_Louis_Aragon', True)
     {'linea': '7', 'tramo': '7_Louis_Aragon', 'numEstaciones': 5, 'estaciones': ['Le Kremlin-Bicêtre', 'Maison Blanche', 'Villejuif-Louis Aragon', 'Villejuif-Léo Lagrange', 'Villejuif-Paul Vaillant-Couturier']}
 
-infoEstacion: Devuelve un diccionario con información de una estación concreta
+#### infoEstacion:
+Devuelve un diccionario con información de una estación concreta
 
 Entrada: self, string con el nombre de la estación
 
@@ -415,7 +432,8 @@ Ejemplo:
     {'estacion': 'Nation', 'lineas': ['1', '2', '6', '9']}
 
 
-listaLineas: Devuelve una lista con todas las lineas de la infraestructura de metro. Cada linea se presenta como un diccionario con su denominación y el número de tramos que la forman.
+#### listaLineas:
+Devuelve una lista con todas las lineas de la infraestructura de metro. Cada linea se presenta como un diccionario con su denominación y el número de tramos que la forman.
 
 Entrada: self
 
@@ -424,7 +442,8 @@ Ejemplo
     >>> PAR.listaLineas()
     [{'linea': '1', 'numTramos': 1}, {'linea': '2', 'numTramos': 1}, {'linea': '3', 'numTramos': 1}, {'linea': '3bis', 'numTramos': 1}, {'linea': '4', 'numTramos': 1}, {'linea': '5', 'numTramos': 1}, {'linea': '6', 'numTramos': 1}, {'linea': '7', 'numTramos': 3}, {'linea': '7bis', 'numTramos': 1}, {'linea': '8', 'numTramos': 1}, {'linea': '9', 'numTramos': 1}, {'linea': '10', 'numTramos': 2}, {'linea': '11', 'numTramos': 1}, {'linea': '12', 'numTramos': 1}, {'linea': '13', 'numTramos': 3}, {'linea': '14', 'numTramos': 1}, {'linea': 'Funicular', 'numTramos': 1}, {'linea': '@P1', 'numTramos': 1}, {'linea': '@P2', 'numTramos': 1}, {'linea': '@P3', 'numTramos': 1}, {'linea': '@P4', 'numTramos': 1}, {'linea': '@P5', 'numTramos': 1}, {'linea': '@P6', 'numTramos': 1}]
 
-listaTramos: Devuelve una lista con todos los tramos de una línea concreta
+#### listaTramos:
+Devuelve una lista con todos los tramos de una línea concreta
 
 Entrada: self
 
@@ -433,7 +452,8 @@ Ejemplo:
     >>> PAR.listaTramos("7")
     ['7', "7_Mairie_d'Ivry", '7_Louis_Aragon']
 
-listaEstaciones: Devuelve una lista con todas las estaciones de la infraestructura
+#### listaEstaciones:
+Devuelve una lista con todas las estaciones de la infraestructura
 
 Entrada: self, booleano optativo que indica si el retorno debe ser ordenado (False por defecto)
 
@@ -446,7 +466,8 @@ Ejemplo:
     ['Abbesses', 'Alexandre Dumas', 'Alésia', 'Alma-Marceau', ..., 'Volontaires', 'Voltaire', 'Wagram']
 
 
-numEnlaces: Devuelve el número de aristas del grafo
+#### numEnlaces:
+Devuelve el número de aristas del grafo
 
 Entrada: Self
 
@@ -455,7 +476,8 @@ Ejemplo:
     >>> PAR.numEnlaces()
     1534
 
-numNodos: Devuelve el número de vértices del grafo
+#### numNodos:
+Devuelve el número de vértices del grafo
 
 Entrada: Self
 
@@ -464,9 +486,11 @@ Ejemplo:
     >>> PAR.numNodos()
     700
 
-Clase miRuta: Almacena y presenta la información de una ruta calculada. Se invoca desde el método buscaRuta de la clase miGrafo
+### Clase miRuta:
+Almacena y presenta la información de una ruta calculada. Se instancia desde el método buscaRuta de la clase miGrafo
 
-Constructor __init__: Construye la instancia de clase y genera los siguientes atributos de instancia:
+### Constructor __init__:
+Construye la instancia de clase y genera los siguientes atributos de instancia:
 
     origen: String con la estación origen de la ruta
     destino: String con la estación destino de la ruta
@@ -483,7 +507,8 @@ Ejemplo:
     >>> print(ruta)
     <grafoMetro.miRuta object at 0x0000026C33B38630>
 
-infoRuta: Devuelve los datos de la ruta
+### infoRuta:
+Devuelve los datos de la ruta
 
 Entrada: self, booleano optativo que indica si en la respuesta se debe incluir la estructura de datos de la ruta
 
@@ -519,7 +544,8 @@ Ejemplo:
               'Cadet L-7',
               'Cadet']}
 
-format: formatea la información de ruta
+### format:
+Formatea la información de ruta
 
 Entrada: self, parámetro optativo que indica si el formato de salida debe ser "largo" (True, por defecto), parámetro optativo entero que indica la indentación aplicable al formato "largo"
 
@@ -556,7 +582,7 @@ Ejemplo:
 
 Además, este módulo grafoMetro contiene las siguientes funciones:
 
-_cargaMapa, Encargada de transformar el fichero de Mapa en el grafo de resolución de rutas y en la estructura de datos de información de líneas
+_cargaMapa, Se invoca desde el construvtor del grafo y es la encargada de transformar el fichero de Mapa en el grafo de resolución de rutas y en la estructura de datos de información de líneas
 _resumenLinea: Auxiliar de _cargaMapa para dar forma a la información de líneas
 _resumentramo: Auxiliar de _cargaMapa para dar forma a la información de tramos
 
