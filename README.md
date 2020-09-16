@@ -586,4 +586,40 @@ _cargaMapa, Se invoca desde el construvtor del grafo y es la encargada de transf
 _resumenLinea: Auxiliar de _cargaMapa para dar forma a la información de líneas
 _resumentramo: Auxiliar de _cargaMapa para dar forma a la información de tramos
 
+## Validación
+Para verificar el sistema haremos una serie de búsquedas aleratorias de rutas para un plano dado desde la shell Python:
+
+    >>> import grafoMetro
+    >>> MAD=grafoMetro.miGrafo("mapas/Madrid.txt")
+    >>> ruta=MAD.buscaRuta(MAD.buscaAleatorio(), MAD.buscaAleatorio())
+    >>> print(ruta.infoRuta())
+    {'origen': 'Carpetana', 'destino': 'Retiro', 'numTransbordos': 1, 'numLineas': 2, 'numEstaciones': 16, 'Duracion': 40.0}
+    >>>
+    >>> print(ruta.format())
+        INICIO en linea 6
+            Carpetana
+            Oporto
+            Opanel
+            Plaza Elíptica
+            Usera
+            Legazpi
+            Arganzuela - Planetario
+            Mendez alvaro
+            Pacifico
+            Conde de Casal
+            Sainz de Baranda
+            O'Donnell
+            Manuel Becerra
+        TRANSBORDO a linea 2
+            Manuel Becerra
+            Goya
+            Principe de Vergara
+            Retiro
+        40.0 min.
+        
+ Este resultado se compara con la propuesta de ruta de Google Maps, configurando sus opciones como "metro" para medio preferido y "mejor ruta". En el caso del ejemplo, la propuesta de mejor opción es:
+ 
+![imagen14](https://github.com/rogazan/Metro-dijkstra/blob/master/images/image14.jpg)
+
+
 
