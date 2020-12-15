@@ -468,7 +468,7 @@ Ocean Parkway (Q)
 West Eighth Street-New York Aquarium (F-Q)
 Coney Island-Stillwell Avenue (D-F-N-Q)
 
-#Linea R_Local
+#Linea R
 Forest Hills-71st Avenue (E-F-M-R)
 67th Avenue (E-M-R)
 63rd Drive-Rego Park (E-M-R)
@@ -516,7 +516,7 @@ Bay Ridge Avenue (R)
 86th Street (R)
 Bay Ridge-95th Street (R)
 
-#Linea R_Express
+#Linea RE
 Forest Hills-71st Avenue (E-F-M-R)
 67th Avenue (E-M-R)
 63rd Drive-Rego Park (E-M-R)
@@ -815,7 +815,7 @@ Bronx Park East (2-5)
 East 180th Street (2-5)
 Third Avenue-149th Street (2-5)
 
-#Linea 6_Local
+#Linea 6
 Pelham Bay Park (6-6E)
 Buhre Avenue (6-6E)
 Middletown Road (6-6E)
@@ -855,7 +855,7 @@ Spring Street (4-6-6E)
 Canal Street (6)
 Brooklyn Bridge-City Hall (4-5-6-6E)
 
-#Linea 6_Express
+#Linea 6E
 Pelham Bay Park (6-6E)
 Middletown Road (6-6E)
 Westchester Square-East Tremont Avenue (6-6E)
@@ -874,7 +874,7 @@ Grand Central-42nd Street (S1-4-5-6-6E-7-7E)
 Spring Street (4-6-6E)
 Brooklyn Bridge-City Hall (4-5-6-6E)
 
-#Linea 7_local
+#Linea 7
 Flushing-Main Street (7-7E)
 Mets-Willets Point (7-7E)
 111th Street (7)
@@ -896,7 +896,7 @@ Fifth Avenue-Bryant Park (7-7E)
 Times Square-42nd Street (N-Q-R-S1-W-1-2-3-7-7E)
 34th Street-Hudson Yards (7-7E)
 
-#Linea 7_Express
+#Linea 7E
 Flushing-Main Street (7-7E)
 Mets-Willets Point (7-7E)
 Junction Boulevard (7-7E)
@@ -962,23 +962,23 @@ Fulton Street (4-5)
 Fulton Street (A-C)
 Fulton Street (2-3)
 
-@Pasarela @P10
+#Pasarela @P10
 Borough Hall (2-3-4-5)
 Court Street (N-R)
 
-@Pasarela @P11
+#Pasarela @P11
 Atlantic Avenue-Barclays Center (D-N-R)
 Atlantic Avenue-Barclays Center (B-Q-2-3-4-5)
 
-@Pasarela @P12
+#Pasarela @P12
 Botanic Garden (S2)
 Franklin Avenue (2-3-4-5)
 
-@Pasarela @P13
+#Pasarela @P13
 Botanic Garden (S2)
 Franklin Avenue (2-3-4-5)
 
-@Pasarela @P14
+#Pasarela @P14
 Junius Street (3)
 Livonia Avenue (L)
 

@@ -2,7 +2,7 @@
 Shibuya
 Omotesando
 Gaienmae
-Aoyama-Itchomoe
+Aoyama-Itchome
 Akasaka-Mitsuke
 Tameike-Sanno
 Toranomon
@@ -25,9 +25,6 @@ Minami-Asagaya
 Shin-Koemji
 Higashi-Koenji
 Shin-Nakano
-Honancho
-Nakano-Fujimicho
-Nakano-Simbashi
 Nakano-sakaue
 Nishi-shinjuku
 Shinjuku
@@ -36,7 +33,7 @@ Shinjuku-Gyoemmae
 Yotsuya-Sanchome
 Yotsuya
 Akasaka-Mitsuke
-Okkaigijidomae
+Kokkai-Gijidomae
 Kasumigaseki
 Ginza
 Tokio
@@ -48,6 +45,12 @@ Korakuen
 Myogadani
 Shin-Otsuka
 Ikebukuro
+
+>Tramo Marunouchi_ramal
+Honancho
+Nakano-Fujimicho
+Nakano-Simbashi
+Nakano-sakaue
 
 #Linea Hibiya
 Naka-Meguro
@@ -71,6 +74,7 @@ Iriya
 Minowa
 Minami-Senju
 Kita-Senju
+Ayase
 
 #Linea Tozai
 Nakano
@@ -84,7 +88,7 @@ Takebashi
 Otemachi
 Nihombashi
 Kayabacho
-Mozen-Nakacho
+Monzen-Nakacho
 Kiba
 Toyocho
 Minami-Sunamachi
@@ -160,17 +164,18 @@ Kiyosumi-Shirakawa
 Sumiyoshi
 Kinshicho
 Oshiage
-#Linea Nanboku
+
+#Linea Namboku
 Meguro
 Shirokanedai
 Shirokane-Takanawa
 Azabu-Juban
 Roppongi-Itchome
-Tammeike-Sanno
+Tameike-Sanno
 Nagatacho
 Yotsuya
 Ichigaya
-Idibashi
+Idabashi
 Korakuen
 Todaimae
 Hon-Komagome
@@ -178,8 +183,9 @@ Komagome
 Nishigahara
 Oji
 Oji-Kamiya
-Shimo
+Shino
 Akabane-Iwabuchi
+
 
 #Linea Fukutoshin
 Wakoshi
@@ -198,3 +204,117 @@ Shinjuku-Sanchome
 Kita-sando
 Meiji-Jingumae
 Shibuya
+
+#Linea Toei Asakusa
+Nishi-Magome
+Magome
+Nakanobu
+Tagoshi
+Gotanda
+Takanawadai
+Sengakuji
+Mita
+Daimon
+Shimbashi
+Higashi-Ginza
+Takaracho
+Nihombashi
+Ningyocho
+Higashi-Nihombashi
+Asakusabashi
+Kuramae
+Asakusa
+Honjo-Azumabashi
+Oshiage
+
+#Linea Toei Mita
+Meguro
+Shirokanedai
+Shirokane-Takanawa
+Mita
+Shiba-Koen
+Oniramon
+Uchi-Saiwaicho
+Hibiya
+Otemachi
+Jimbocho
+Siudobashi
+Kasuga
+Hakusan
+Sengoku
+Sugamo
+Nishi-Sugamo
+Shin-Itabashi
+Itabashe-Kuyakushomae
+Itabashi-Honcho
+Motohasunuma
+Shimura-Sakaue
+Shimura-Sanchome
+Hasune
+Nishidai
+Takashimadeira
+Shin-Takashimadaira
+Nishi-Takashimadaira
+
+#Linea Toei Shinjuku
+Shinjuku
+Shinjuku-Sanchome
+Akebonobashi
+Ichigaya
+Kudanshita
+Jimbocho
+Ogawamachi
+Iwamotocho
+Bakuro-Yokoyama
+Hamacho
+Morishita
+Kikukawa
+Sumiyoshi
+Nishi-Ojima
+Ojima
+Higashi-Ojima
+Funabori
+Ichinoe
+Mizue
+Shinozaki
+Motoyawata
+
+Línea Toei Oedo
+Shinjuku-Nishiguchi
+Hingashi-Shinjuku
+Wakamatsu-Kawada
+Ushigome-Yanagicho
+Ushigome-Kagurazaka
+Idabashi
+Kasuga
+Hongo-Sanchome
+Ueno-Okachimachi
+Shin-Okachimachi
+Kuramae
+Ryogoku
+Morishita
+Kiyosumi-Shirakawa
+Monzen-Nakacho
+Tsukishima
+Kachidoki
+Tsukiji-Shijo
+Shiodome
+Daimon
+Akabanebashi
+Azabu-Juban
+Roppongi
+Aoyama-Itchome
+Kokuritsu-Kyogijo
+Yoyogi
+Shinjuku
+Tochomae
+Nishishinjuku-Gochome
+Nakano-Sakaue
+Higashi-Nakano
+Nakai
+Ochiai-Minaminagasaki
+Shin-Egota
+Nerima
+Toshimaen
+Nerima-Kasugacho
+Hikarigaoka
